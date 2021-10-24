@@ -13,5 +13,5 @@ A data frame.
 Exposes the \code{GET /api/v3/account} endpoint.
 }
 \examples{
-klines("BTCUSDT")
+account()
 }

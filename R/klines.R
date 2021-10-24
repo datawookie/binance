@@ -2,7 +2,7 @@
 #'
 #' Exposes the \code{GET /api/v3/klines} endpoint.
 #'
-#' @param symbol Symbol.
+#' @inheritParams trade-parameters
 #' @param interval Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
 #'   8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 #'   w = weeks and M = months.
@@ -41,7 +41,7 @@ klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) {
       "ignore"
     )) %>%
     select(open_time, close_time, everything(), -ignore) %>%
-    # mutate_at(vars(ends_with("_time")), convert_time) %>%
+    mutate_at(vars(ends_with("_time")), convert_time) %>%
     when(
       !volume ~ select(., -ends_with("_volume")),
       ~ identity(.)

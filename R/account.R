@@ -6,9 +6,9 @@
 #' @export
 #'
 #' @examples
-#' klines("BTCUSDT")
+#' account()
 account <- function() {
-  account <- binance:::GET(
+  account <- GET(
     "/api/v3/account",
     simplifyVector = FALSE,
     security_type = "USER_DATA"
@@ -40,4 +40,29 @@ account <- function() {
   account$permissions <- unlist(account$permissions)
 
   account
+}
+
+#' Get current account trades list
+#'
+#' Exposes the \code{GET /api/v3/myTrades} endpoint.
+#'
+#' @inheritParams trade-parameters
+#' @return
+#' @export
+#'
+#' @examples
+trades_list <- function(symbol) {
+  binance:::GET(
+    "/api/v3/myTrades",
+    query = list(
+      symbol = convert_symbol(symbol)
+    ),
+    security_type = "USER_DATA"
+  ) %>%
+    bind_rows() %>%
+    clean_names() %>%
+    mutate(
+      time = convert_time(time)
+    ) %>%
+    select(time, everything(), -order_list_id)
 }
