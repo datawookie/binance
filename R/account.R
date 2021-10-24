@@ -22,8 +22,8 @@ account <- function() {
       "taker_commission",
       "buyer_commission",
       "seller_commission"
-      )
-    ] %>%
+    )
+  ] %>%
     as_tibble() %>%
     rename_with(~ tolower(sub("_commission", "", .x)))
 
@@ -51,18 +51,30 @@ account <- function() {
 #' @export
 #'
 #' @examples
-trades_list <- function(symbol) {
-  binance:::GET(
+trades_list <- function(
+  symbol,
+  start_time = NULL,
+  end_time = NULL
+) {
+  trades <- GET(
     "/api/v3/myTrades",
     query = list(
-      symbol = convert_symbol(symbol)
+      symbol = convert_symbol(symbol),
+      startTime = timestamp(start_time),
+      endTime = timestamp(end_time)
     ),
     security_type = "USER_DATA"
   ) %>%
     bind_rows() %>%
-    clean_names() %>%
-    mutate(
-      time = convert_time(time)
-    ) %>%
-    select(time, everything(), -order_list_id)
+    clean_names()
+
+  if (nrow(trades)) {
+    trades %>%
+      mutate(
+        time = convert_time(time)
+      ) %>%
+      select(time, everything(), -order_list_id)
+  } else {
+    NULL
+  }
 }

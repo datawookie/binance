@@ -6,8 +6,15 @@ convert_symbol <- function(symbol) {
   sub("/", "", symbol)
 }
 
-timestamp <- function() {
-  sprintf("%.0f", as.numeric(Sys.time()) * 1000)
+timestamp <- function(time = NA) {
+  if (is.null(time)) {
+    NULL
+  } else {
+    if (is.na(time)) time <- Sys.time()
+    if (is.character(time)) time <- as.POSIXct(time)
+
+    sprintf("%.0f", as.numeric(time) * 1000)
+  }
 }
 
 signature <- function(query = NA, body = NA, key = NA) {
@@ -15,7 +22,7 @@ signature <- function(query = NA, body = NA, key = NA) {
     query <- NULL
   } else {
     if (is.list(query)) {
-    query <- httr:::compose_query(httr:::compact(query))
+      query <- httr:::compose_query(httr:::compact(query))
     }
   }
   if (length(body) == 1 && is.na(body)) {
