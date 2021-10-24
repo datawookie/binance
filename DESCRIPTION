@@ -1,0 +1,22 @@
+Package: binance
+Type: Package
+Title: Binance API Access
+Version: 0.0.1
+Authors@R: 
+    c(person(given = c("Andrew", "B."),
+             family = "Collier",
+             role = c("aut", "cre", "cph"),
+             email = "andrew@fathomdata.dev")
+             )
+Description: Wrapper for the Binance API.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    httr,
+    jsonlite
+RoxygenNote: 7.1.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
