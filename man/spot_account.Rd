@@ -13,5 +13,7 @@ A data frame.
 Exposes the \code{GET /api/v3/account} endpoint.
 }
 \examples{
+\dontrun{
 spot_account()
+}
 }

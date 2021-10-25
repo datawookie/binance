@@ -20,6 +20,8 @@ A data frame.
 Exposes the \code{GET /api/v3/myTrades} endpoint.
 }
 \examples{
+\dontrun{
 spot_trades_list("ENJ/ETH")
 spot_trades_list("ENJ/ETH", start_time = "2021-09-08", end_time = "2021-09-09")
+}
 }

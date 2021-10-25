@@ -58,3 +58,57 @@ market_klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) 
       ~ identity(.)
     )
 }
+
+#' Current average price for a symbol
+#'
+#' Exposes the \code{GET /api/v3/avgPrice} endpoint.
+#'
+#' @inheritParams trade-parameters
+#'
+#' @return A data frame.
+#' @export
+#'
+#' @examples
+#' market_average_price("BTCUSDT")
+market_average_price <- function(symbol) {
+  symbol <- convert_symbol(symbol)
+  GET(
+    "/api/v3/avgPrice",
+    query = list(
+      symbol = symbol
+    ),
+    simplifyVector = TRUE
+  ) %>%
+    as_tibble() %>%
+    mutate(symbol = symbol) %>%
+    select(symbol, everything())
+}
+
+#' Get recent trades
+#'
+#' Exposes the \code{GET /api/v3/trades} endpoint.
+#'
+#' @inheritParams trade-parameters
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' market_recent_trades("BTCUSDT")
+market_recent_trades <- function(symbol) {
+  symbol <- convert_symbol(symbol)
+  binance:::GET(
+    "/api/v3/trades",
+    query = list(
+      symbol = symbol
+    ),
+    simplifyVector = TRUE
+  ) %>%
+    as_tibble() %>%
+    mutate(
+      symbol = symbol,
+      time = convert_time(time)
+    ) %>%
+    select(symbol, everything()) %>%
+    clean_names()
+}

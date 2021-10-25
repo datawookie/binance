@@ -6,7 +6,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' wallet_coins()
+#' }
 wallet_coins <- function() {
   GET(
     "/sapi/v1/capital/config/getall",

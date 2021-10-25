@@ -78,11 +78,11 @@ for `{binance}` can be found
 -   [ ] `GET /api/v3/time`
 -   [ ] `GET /api/v3/exchangeInfo`
 -   [ ] `GET /api/v3/depth`
--   [ ] `GET /api/v3/trades`
+-   [x] `GET /api/v3/trades`
 -   [ ] `GET /api/v3/historicalTrades`
 -   [ ] `GET /api/v3/aggTrades`
 -   [x] `GET /api/v3/klines`
--   [ ] `GET /api/v3/avgPrice`
+-   [x] `GET /api/v3/avgPrice`
 -   [ ] `GET /api/v3/ticker/24hr`
 -   [ ] `GET /api/v3/ticker/price`
 -   [ ] `GET /api/v3/ticker/bookTicker`

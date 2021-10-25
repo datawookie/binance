@@ -13,5 +13,7 @@ A data frame.
 Exposes the \code{GET /sapi/v1/capital/config/getall} endpoint.
 }
 \examples{
+\dontrun{
 wallet_coins()
+}
 }
