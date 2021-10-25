@@ -7,9 +7,12 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom purrr when possibly
 #' @importFrom stats setNames time
+#' @importFrom lubridate with_tz
 NULL
 
 USER_AGENT <- user_agent("https://github.com/datawookie/binance")
+
+ORDER_TYPES = c("SPOT", "MARGIN", "FUTURES")
 
 #' Parameters for trade functions
 #'

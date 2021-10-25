@@ -62,6 +62,7 @@ spot_trades_list <- function(
   start_time = NULL,
   end_time = NULL
 ) {
+  log_debug("Retrieving trades on {symbol}.")
   trades <- GET(
     "/api/v3/myTrades",
     query = list(
@@ -79,6 +80,7 @@ spot_trades_list <- function(
       mutate(
         time = convert_time(time)
       ) %>%
+      mutate_at(c("price", "qty", "quote_qty", "commission"), as.numeric) %>%
       select(time, everything(), -order_list_id)
   } else {
     NULL

@@ -2,7 +2,7 @@
 % Please edit documentation in R/market.R
 \name{market_klines}
 \alias{market_klines}
-\title{Klines (candlestick bars) for a symbol}
+\title{K-Lines (candlestick bars) for a symbol}
 \usage{
 market_klines(symbol, interval = "1m", limit = 500, volume = FALSE)
 }

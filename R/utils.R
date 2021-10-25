@@ -1,5 +1,11 @@
-convert_time <- function(time) {
-  as.POSIXct(as.numeric(time) / 1000, origin = "1970-01-01")
+convert_time <- function(time, tz = "UTC") {
+  time <- as.POSIXct(as.numeric(time) / 1000, origin = "1970-01-01")
+
+  if (!is.na(tz)) {
+    with_tz(time, tz)
+  } else {
+    time
+  }
 }
 
 convert_symbol <- function(symbol) {

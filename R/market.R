@@ -9,14 +9,54 @@ market_ping <- function() {
   class(try(GET("/api/v3/ping"), silent = TRUE)) == "list"
 }
 
-#' Klines (candlestick bars) for a symbol
+#' Get the current server time
+#'
+#' Exposes the \code{GET /api/v3/time} endpoint.
+#'
+#' @return A \code{POSIXct} object.
+#' @export
+#'
+#' @examples
+#' market_server_time()
+market_server_time <- function() {
+  GET("/api/v3/time") %>% convert_time()
+}
+
+#' Current exchange trading rules and symbol information
+#'
+#' Exposes the \code{GET /api/v3/exchangeInfo} endpoint.
+#'
+#' @return A \code{POSIXct} object.
+#' @export
+#'
+#' @examples
+#' market_exchange_info()
+market_exchange_info <- function() {
+  info <- binance:::GET("/api/v3/exchangeInfo")
+
+  info$symbols <- lapply(info$symbols, function(symbol) {
+    symbol$permissions <- list(unlist(symbol$permissions))
+    symbol$orderTypes <- list(unlist(symbol$orderTypes))
+    symbol$filters <- list(bind_rows(symbol$filters))
+    symbol
+  }) %>%
+    bind_rows() %>%
+    clean_names()
+
+  info$rateLimits <- info$rateLimits %>% bind_rows() %>% clean_names()
+
+  info$serverTime <- convert_time(info$serverTime)
+
+  names(info) <- make_clean_names(names(info))
+
+  info
+}
+
+#' K-Lines (candlestick bars) for a symbol
 #'
 #' Exposes the \code{GET /api/v3/klines} endpoint.
 #'
 #' @inheritParams trade-parameters
-#' @param interval Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
-#'   8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
-#'   w = weeks and M = months.
 #' @param limit Maximum number of records in result. Default is 500 and maximum
 #'   is 1000.
 #' @param volume Whether to include volume data in output.
@@ -27,6 +67,7 @@ market_ping <- function() {
 #' @examples
 #' market_klines("BTCUSDT")
 market_klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) {
+  symbol <- convert_symbol(symbol)
   GET(
     "/api/v3/klines",
     query = list(
@@ -97,7 +138,7 @@ market_average_price <- function(symbol) {
 #' market_recent_trades("BTCUSDT")
 market_recent_trades <- function(symbol) {
   symbol <- convert_symbol(symbol)
-  binance:::GET(
+  GET(
     "/api/v3/trades",
     query = list(
       symbol = symbol
@@ -111,4 +152,33 @@ market_recent_trades <- function(symbol) {
     ) %>%
     select(symbol, everything()) %>%
     clean_names()
+}
+
+#' Latest price for a symbol
+#'
+#' Exposes the \code{GET /api/v3/ticker/price} endpoint.
+#'
+#' @inheritParams trade-parameters
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#' market_recent_trades("BTCUSDT")
+market_price_ticker <- function(symbol) {
+  symbol <- convert_symbol(symbol)
+  GET(
+    "/api/v3/ticker/price",
+    query = list(
+      symbol = symbol
+    ),
+    simplifyVector = TRUE
+  )
+    # as_tibble() %>%
+    # mutate(
+    #   symbol = symbol,
+    #   time = convert_time(time)
+    # ) %>%
+    # select(symbol, everything()) %>%
+    # clean_names()
 }
