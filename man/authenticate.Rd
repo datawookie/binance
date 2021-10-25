@@ -11,9 +11,6 @@ authenticate(key = NULL, secret = NULL)
 
 \item{secret}{API secret.}
 }
-\value{
-
-}
 \description{
 Set Binance REST API key & secret
 }

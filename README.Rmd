@@ -22,7 +22,7 @@ knitr::opts_chunk$set(comment = NA)
 ## Endpoints
 
 - [ ] `GET /sapi/v1/system/status`
-- [ ] `GET /sapi/v1/capital/config/getall (HMAC SHA256)`
+- [X] `GET /sapi/v1/capital/config/getall (HMAC SHA256)`
 - [ ] `GET /sapi/v1/accountSnapshot (HMAC SHA256)`
 - [ ] `POST /sapi/v1/account/disableFastWithdrawSwitch (HMAC SHA256)`
 - [ ] `POST /sapi/v1/account/enableFastWithdrawSwitch (HMAC SHA256)`
@@ -71,14 +71,14 @@ knitr::opts_chunk$set(comment = NA)
 - [ ] `POST /sapi/v1/managed-subaccount/deposit (HMAC SHA256)`
 - [ ] `GET /sapi/v1/managed-subaccount/asset (HMAC SHA256)`
 - [ ] `POST /sapi/v1/managed-subaccount/withdraw (HMAC SHA256)`
-- [ ] `GET /api/v3/ping`
+- [X] `GET /api/v3/ping`
 - [ ] `GET /api/v3/time`
 - [ ] `GET /api/v3/exchangeInfo`
 - [ ] `GET /api/v3/depth`
 - [ ] `GET /api/v3/trades`
 - [ ] `GET /api/v3/historicalTrades`
 - [ ] `GET /api/v3/aggTrades`
-- [ ] `GET /api/v3/klines`
+- [X] `GET /api/v3/klines`
 - [ ] `GET /api/v3/avgPrice`
 - [ ] `GET /api/v3/ticker/24hr`
 - [ ] `GET /api/v3/ticker/price`
@@ -95,8 +95,8 @@ knitr::opts_chunk$set(comment = NA)
 - [ ] `GET /api/v3/orderList (HMAC SHA256)`
 - [ ] `GET /api/v3/allOrderList (HMAC SHA256)`
 - [ ] `GET /api/v3/openOrderList (HMAC SHA256)`
-- [ ] `GET /api/v3/account (HMAC SHA256)`
-- [ ] `GET /api/v3/myTrades (HMAC SHA256)`
+- [X] `GET /api/v3/account (HMAC SHA256)`
+- [X] `GET /api/v3/myTrades (HMAC SHA256)`
 - [ ] `POST /sapi/v1/margin/transfer (HMAC SHA256)`
 - [ ] `POST /sapi/v1/margin/loan (HMAC SHA256)`
 - [ ] `POST /sapi/v1/margin/repay (HMAC SHA256)`

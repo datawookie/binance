@@ -1,3 +1,32 @@
+# Alternative API clusters:
+#
+# api1.binance.com
+# api2.binance.com
+# api3.binance.com
+#
+BASE_URL <- "https://api.binance.com"
+#
+# Base URL for testing: https://testnet.binance.vision/.
+
+base_url <- function(url = NULL) {
+  if (!is.null(url)) {
+    BASE_URL <<- url
+  }
+
+  BASE_URL
+}
+
+#' Title
+#'
+#' The security type can be one of the following:
+#'
+#' \code{NONE}        Endpoint can be accessed freely.
+#' \code{TRADE}       Endpoint requires sending a valid API-Key and signature.
+#' \code{USER_DATA}   Endpoint requires sending a valid API-Key and signature.
+#' \code{USER_STREAM} Endpoint requires sending a valid API-Key.
+#' \code{MARKET_DATA} Endpoint requires sending a valid API-Key.
+#'
+#' @noRd
 GET <- function(
   path,
   query = list(),
@@ -53,4 +82,50 @@ GET <- function(
   }
 
   parsed
+}
+
+#' Borrowed from httr:::compact.
+#' @noRd
+compact <- function (x)
+{
+  empty <- vapply(x, is_empty, logical(1))
+  x[!empty]
+}
+
+#' Borrowed from httr:::compose_query.
+#' @noRd
+compose_query <- function (elements)
+{
+  if (length(elements) == 0) {
+    return("")
+  }
+  if (!all(has_name(elements))) {
+    stop("All components of query must be named", call. = FALSE)
+  }
+  stopifnot(is.list(elements))
+  elements <- compact(elements)
+  names <- curl::curl_escape(names(elements))
+  encode <- function(x) {
+    if (inherits(x, "AsIs"))
+      return(x)
+    curl::curl_escape(x)
+  }
+  values <- vapply(elements, encode, character(1))
+  paste0(names, "=", values, collapse = "&")
+}
+
+#' Borrowed from httr:::is_empty.
+#' @noRd
+is_empty <- function (x) {
+  length(x) == 0
+}
+
+#' Borrowed from httr:::has_name.
+#' @noRd
+has_name <- function(x) {
+  nms <- names(x)
+  if (is.null(nms)) {
+    return(rep(FALSE, length(x)))
+  }
+  !is.na(nms) & nms != ""
 }

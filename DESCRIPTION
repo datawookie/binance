@@ -1,6 +1,6 @@
 Package: binance
 Type: Package
-Title: Binance API Access
+Title: Wrapper for Binance API
 Version: 0.0.1
 Authors@R: 
     c(person(given = c("Andrew", "B."),
@@ -13,9 +13,14 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
+    curl,
+    digest,
     dplyr,
     httr,
-    jsonlite
+    janitor,
+    jsonlite,
+    logger,
+    purrr
 RoxygenNote: 7.1.2
 Suggests: 
     testthat (>= 3.0.0)

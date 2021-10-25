@@ -23,7 +23,7 @@ for `{binance}` can be found
 ## Endpoints
 
 -   [ ] `GET /sapi/v1/system/status`
--   [ ] `GET /sapi/v1/capital/config/getall (HMAC SHA256)`
+-   [x] `GET /sapi/v1/capital/config/getall (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/accountSnapshot (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/account/disableFastWithdrawSwitch (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/account/enableFastWithdrawSwitch (HMAC SHA256)`
@@ -74,14 +74,14 @@ for `{binance}` can be found
 -   [ ] `POST /sapi/v1/managed-subaccount/deposit (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/managed-subaccount/asset (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/managed-subaccount/withdraw (HMAC SHA256)`
--   [ ] `GET /api/v3/ping`
+-   [x] `GET /api/v3/ping`
 -   [ ] `GET /api/v3/time`
 -   [ ] `GET /api/v3/exchangeInfo`
 -   [ ] `GET /api/v3/depth`
 -   [ ] `GET /api/v3/trades`
 -   [ ] `GET /api/v3/historicalTrades`
 -   [ ] `GET /api/v3/aggTrades`
--   [ ] `GET /api/v3/klines`
+-   [x] `GET /api/v3/klines`
 -   [ ] `GET /api/v3/avgPrice`
 -   [ ] `GET /api/v3/ticker/24hr`
 -   [ ] `GET /api/v3/ticker/price`
@@ -98,8 +98,8 @@ for `{binance}` can be found
 -   [ ] `GET /api/v3/orderList (HMAC SHA256)`
 -   [ ] `GET /api/v3/allOrderList (HMAC SHA256)`
 -   [ ] `GET /api/v3/openOrderList (HMAC SHA256)`
--   [ ] `GET /api/v3/account (HMAC SHA256)`
--   [ ] `GET /api/v3/myTrades (HMAC SHA256)`
+-   [x] `GET /api/v3/account (HMAC SHA256)`
+-   [x] `GET /api/v3/myTrades (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/margin/transfer (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/margin/loan (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/margin/repay (HMAC SHA256)`

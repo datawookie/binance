@@ -5,6 +5,10 @@
 \title{Parameters for trade functions}
 \arguments{
 \item{symbol}{Symbol.}
+
+\item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
+
+\item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}
 }
 \description{
 Parameters for trade functions

@@ -1,3 +1,14 @@
+#' Test connectivity to the Binance REST API
+#'
+#' @return \code{TRUE} on success or \code{FALSE} on failure.
+#' @export
+#'
+#' @examples
+#' market_ping()
+market_ping <- function() {
+  class(try(GET("/api/v3/ping"), silent = TRUE)) == "list"
+}
+
 #' Klines (candlestick bars) for a symbol
 #'
 #' Exposes the \code{GET /api/v3/klines} endpoint.
@@ -14,8 +25,8 @@
 #' @export
 #'
 #' @examples
-#' klines("BTCUSDT")
-klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) {
+#' market_klines("BTCUSDT")
+market_klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) {
   GET(
     "/api/v3/klines",
     query = list(

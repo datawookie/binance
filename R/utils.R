@@ -22,14 +22,14 @@ signature <- function(query = NA, body = NA, key = NA) {
     query <- NULL
   } else {
     if (is.list(query)) {
-      query <- httr:::compose_query(httr:::compact(query))
+      query <- compose_query(compact(query))
     }
   }
   if (length(body) == 1 && is.na(body)) {
     body <- NULL
   } else {
     if (is.list(body)) {
-      body <- httr:::compose_query(httr:::compact(body))
+      body <- compose_query(compact(body))
     }
   }
 

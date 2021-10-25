@@ -6,7 +6,6 @@ API_SECRET = "api_secret"
 #' @param key API key.
 #' @param secret API secret.
 #'
-#' @return
 #' @export
 #'
 #' @examples

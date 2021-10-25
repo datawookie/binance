@@ -6,8 +6,8 @@
 #' @export
 #'
 #' @examples
-#' account()
-account <- function() {
+#' spot_account()
+spot_account <- function() {
   account <- GET(
     "/api/v3/account",
     simplifyVector = FALSE,
@@ -47,11 +47,13 @@ account <- function() {
 #' Exposes the \code{GET /api/v3/myTrades} endpoint.
 #'
 #' @inheritParams trade-parameters
-#' @return
+#' @return A data frame.
 #' @export
 #'
 #' @examples
-trades_list <- function(
+#' spot_trades_list("ENJ/ETH")
+#' spot_trades_list("ENJ/ETH", start_time = "2021-09-08", end_time = "2021-09-09")
+spot_trades_list <- function(
   symbol,
   start_time = NULL,
   end_time = NULL
