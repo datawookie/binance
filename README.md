@@ -20,7 +20,39 @@ API](https://binance-docs.github.io/apidocs/spot/en/). The documentation
 for `{binance}` can be found
 [here](https://datawookie.github.io/binance/).
 
+## Installation
+
+Install the development version from GitHub.
+
+``` r
+remotes::install_github("datawookie/binance")
+```
+
+## Load the Library
+
+Load the library.
+
+``` r
+library(binance)
+```
+
+## Authenticate
+
+Many of the functions are available without authentication. However, if
+you want to access information relating to your wallet or trades then
+you’ll need to create an API key and secret.
+
+``` r
+authenticate(
+  key = Sys.getenv("BINANCE_API_KEY"),
+  secret = Sys.getenv("BINANCE_API_SECRET")
+)
+```
+
 ## Endpoints
+
+The Binance API is extensive. Below is the current coverage of the
+`{binance}` package.
 
 -   [ ] `GET /sapi/v1/system/status`
 -   [x] `GET /sapi/v1/capital/config/getall (HMAC SHA256)`

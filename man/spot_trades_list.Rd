@@ -4,7 +4,7 @@
 \alias{spot_trades_list}
 \title{Get current account trades list}
 \usage{
-spot_trades_list(symbol, start_time = NULL, end_time = NULL)
+spot_trades_list(symbol, start_time = NULL, end_time = NULL, limit = 500)
 }
 \arguments{
 \item{symbol}{Symbol.}

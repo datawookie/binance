@@ -60,7 +60,8 @@ spot_account <- function() {
 spot_trades_list <- function(
   symbol,
   start_time = NULL,
-  end_time = NULL
+  end_time = NULL,
+  limit = 500
 ) {
   log_debug("Retrieving trades on {symbol}.")
   trades <- GET(
@@ -68,7 +69,8 @@ spot_trades_list <- function(
     query = list(
       symbol = convert_symbol(symbol),
       startTime = time_to_timestamp(start_time),
-      endTime = time_to_timestamp(end_time)
+      endTime = time_to_timestamp(end_time),
+      limit = limit
     ),
     security_type = "USER_DATA"
   ) %>%
@@ -78,10 +80,46 @@ spot_trades_list <- function(
   if (nrow(trades)) {
     trades %>%
       mutate(
-        time = convert_time(time)
-      ) %>%
+        time = convert_time(time),
+        side = ifelse(is_buyer, "BUY", "SELL")
+        ) %>%
       mutate_at(c("price", "qty", "quote_qty", "commission"), as.numeric) %>%
-      select(time, everything(), -order_list_id)
+      select(symbol, time, everything(), -order_list_id, -is_buyer)
+  } else {
+    NULL
+  }
+}
+
+
+#' Get current account trades list
+#'
+#' Exposes the \code{GET /api/v3/openOrders} endpoint.
+#'
+#' @inheritParams trade-parameters
+#' @return A data frame.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' spot_open_orders("ENJ/ETH")
+#' }
+spot_open_orders <- function(symbol) {
+  log_debug("Retrieving open orders on {symbol}.")
+  orders <- binance:::GET(
+    "/api/v3/openOrders",
+    query = list(
+      symbol = convert_symbol(symbol)
+    ),
+    security_type = "USER_DATA"
+  ) %>%
+    bind_rows() %>%
+    clean_names()
+
+  if (nrow(orders)) {
+    orders %>%
+      mutate_at(vars(ends_with("time")), convert_time) %>%
+      mutate_at(vars(ends_with("qty"), ends_with("price")), as.numeric) %>%
+      select(symbol, time, everything(), -order_list_id, -client_order_id)
   } else {
     NULL
   }

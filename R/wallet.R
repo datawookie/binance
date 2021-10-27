@@ -60,8 +60,7 @@ wallet_daily_snapshot <- function(
       limit = limit
     )
   )$snapshotVos %>%
-    lapply(function(x) {x$data = list(x$data); x}) %>%
-    bind_rows() %>%
+    map_dfr(~ {.x$data = list(.x$data); .x}) %>%
     unnest_wider(data) %>%
     clean_names() %>%
     mutate(
@@ -71,7 +70,8 @@ wallet_daily_snapshot <- function(
         bind_rows(balance) %>%
           mutate(
             free = as.numeric(free),
-            locked = as.numeric(locked)
+            locked = as.numeric(locked),
+            total = free + locked
           )
       })
     ) %>%
@@ -110,10 +110,7 @@ wallet_deposit_history <- function(
   ) %>%
     bind_rows() %>%
     clean_names() %>%
-  mutate_at(
-    vars(ends_with("_time")),
-    convert_time
-  ) %>%
+  mutate_at(vars(ends_with("_time")), convert_time) %>%
     mutate(
       address_tag = ifelse(address_tag == "", NA, address_tag)
     )
