@@ -60,7 +60,7 @@ wallet_daily_snapshot <- function(
       limit = limit
     )
   )$snapshotVos %>%
-    map_dfr(~ {.x$data = list(.x$data); .x}) %>%
+    purrr::map_dfr(~ {.x$data = list(.x$data); .x}) %>%
     unnest_wider(data) %>%
     clean_names() %>%
     mutate(
