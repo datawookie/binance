@@ -41,7 +41,11 @@ GET <- function(
   headers <- list()
   #
   if (security_type %in% c("USER_DATA")) {
-    headers["X-MBX-APIKEY"] = Sys.getenv("BINANCE_API_KEY")
+    binance_api_key <- cache_get(API_KEY)
+    if (is.null(binance_api_key)) {
+      stop("Call authenticate() first to set API key.", call. = FALSE)
+    }
+    headers["X-MBX-APIKEY"] = binance_api_key
   }
   #
   if (length(headers)) {
@@ -51,7 +55,7 @@ GET <- function(
   }
 
   if (signed) {
-    query["timestamp"] <- timestamp()
+    query["timestamp"] <- time_to_timestamp()
     query["signature"] <- signature(query)
   }
 
@@ -65,11 +69,6 @@ GET <- function(
     stop("API did not return JSON.", call. = FALSE)
   }
 
-  parsed <- fromJSON(
-    content(response, as = "text"),
-    simplifyVector = simplifyVector
-  )
-
   if (status_code(response) != 200) {
     stop(
       sprintf(
@@ -81,7 +80,10 @@ GET <- function(
     )
   }
 
-  parsed
+  fromJSON(
+    content(response, as = "text"),
+    simplifyVector = simplifyVector
+  )
 }
 
 #' Borrowed from httr:::compact.

@@ -4,6 +4,8 @@
 \alias{trade-parameters}
 \title{Parameters for trade functions}
 \arguments{
+\item{coin}{Coin.}
+
 \item{symbol}{Symbol.}
 
 \item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}

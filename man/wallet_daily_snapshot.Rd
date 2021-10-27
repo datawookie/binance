@@ -4,7 +4,20 @@
 \alias{wallet_daily_snapshot}
 \title{Daily account snapshot}
 \usage{
-wallet_daily_snapshot(type = "SPOT")
+wallet_daily_snapshot(
+  type = "SPOT",
+  start_time = NULL,
+  end_time = NULL,
+  limit = 5
+)
+}
+\arguments{
+\item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
+
+\item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}
+
+\item{limit}{Maximum number of records in result. Default is 5, minimum is 5
+and maximum is 30.}
 }
 \value{
 A data frame.

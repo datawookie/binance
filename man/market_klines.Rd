@@ -4,7 +4,14 @@
 \alias{market_klines}
 \title{K-Lines (candlestick bars) for a symbol}
 \usage{
-market_klines(symbol, interval = "1m", limit = 500, volume = FALSE)
+market_klines(
+  symbol,
+  interval = "1m",
+  start_time = NULL,
+  end_time = NULL,
+  limit = 500,
+  volume = FALSE
+)
 }
 \arguments{
 \item{symbol}{Symbol.}
@@ -12,6 +19,10 @@ market_klines(symbol, interval = "1m", limit = 500, volume = FALSE)
 \item{interval}{Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
 8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 w = weeks and M = months.}
+
+\item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
+
+\item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}
 
 \item{limit}{Maximum number of records in result. Default is 500 and maximum
 is 1000.}

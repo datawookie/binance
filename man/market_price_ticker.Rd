@@ -16,5 +16,5 @@ market_price_ticker(symbol)
 Exposes the \code{GET /api/v3/ticker/price} endpoint.
 }
 \examples{
-market_recent_trades("BTCUSDT")
+market_price_ticker("BTCUSDT")
 }

@@ -12,12 +12,12 @@ convert_symbol <- function(symbol) {
   sub("/", "", symbol)
 }
 
-timestamp <- function(time = NA) {
+time_to_timestamp <- function(time = NA, tz = "UTC") {
   if (is.null(time)) {
     NULL
   } else {
     if (is.na(time)) time <- Sys.time()
-    if (is.character(time)) time <- as.POSIXct(time)
+    if (is.character(time)) time <- as.POSIXct(time, tz = tz)
 
     sprintf("%.0f", as.numeric(time) * 1000)
   }

@@ -20,7 +20,9 @@ Imports:
     janitor,
     jsonlite,
     logger,
-    purrr
+    lubridate,
+    purrr,
+    tidyr
 RoxygenNote: 7.1.2
 Suggests: 
     testthat (>= 3.0.0)

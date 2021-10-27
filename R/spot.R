@@ -67,8 +67,8 @@ spot_trades_list <- function(
     "/api/v3/myTrades",
     query = list(
       symbol = convert_symbol(symbol),
-      startTime = timestamp(start_time),
-      endTime = timestamp(end_time)
+      startTime = time_to_timestamp(start_time),
+      endTime = time_to_timestamp(end_time)
     ),
     security_type = "USER_DATA"
   ) %>%

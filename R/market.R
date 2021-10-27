@@ -41,7 +41,9 @@ market_exchange_info <- function() {
     symbol
   }) %>%
     bind_rows() %>%
-    clean_names()
+    clean_names() %>%
+    select_at(vars(-ends_with("precision"))) %>%
+    rename_all(~ sub("_asset", "", .x))
 
   info$rateLimits <- info$rateLimits %>% bind_rows() %>% clean_names()
 
@@ -57,8 +59,7 @@ market_exchange_info <- function() {
 #' Exposes the \code{GET /api/v3/klines} endpoint.
 #'
 #' @inheritParams trade-parameters
-#' @param limit Maximum number of records in result. Default is 500 and maximum
-#'   is 1000.
+#' @inheritParams limit-500-1000
 #' @param volume Whether to include volume data in output.
 #'
 #' @return A data frame.
@@ -66,19 +67,29 @@ market_exchange_info <- function() {
 #'
 #' @examples
 #' market_klines("BTCUSDT")
-market_klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) {
+market_klines <- function(
+  symbol,
+  interval = "1m",
+  start_time = NULL,
+  end_time = NULL,
+  limit = 500,
+  volume = FALSE
+) {
+  log_debug("Retrieving k-lines on {symbol}.")
   symbol <- convert_symbol(symbol)
-  GET(
+  klines <- binance:::GET(
     "/api/v3/klines",
     query = list(
       symbol = symbol,
       interval = interval,
+      startTime = time_to_timestamp(start_time),
+      endTime = time_to_timestamp(end_time),
       limit = limit
     ),
     simplifyVector = TRUE
-  ) %>%
-    as.data.frame() %>%
-    setNames(c(
+  )
+
+  colnames(klines) <- c(
       "open_time",
       "open",
       "high",
@@ -91,9 +102,17 @@ market_klines <- function(symbol, interval = "1m", limit = 500, volume = FALSE) 
       "taker_buy_base_volume",
       "taker_buy_quote_volume",
       "ignore"
-    )) %>%
-    select(open_time, close_time, everything(), -ignore) %>%
+    )
+
+  klines %>%
+    as_tibble() %>%
+    mutate(
+      symbol = symbol,
+      trades = as.integer(trades)
+      ) %>%
     mutate_at(vars(ends_with("_time")), convert_time) %>%
+    mutate_at(vars(open:volume), as.numeric) %>%
+    select(symbol, open_time, close_time, everything(), -ignore) %>%
     when(
       !volume ~ select(., -ends_with("_volume")),
       ~ identity(.)
@@ -164,21 +183,14 @@ market_recent_trades <- function(symbol) {
 #' @export
 #'
 #' @examples
-#' market_recent_trades("BTCUSDT")
+#' market_price_ticker("BTCUSDT")
 market_price_ticker <- function(symbol) {
   symbol <- convert_symbol(symbol)
-  GET(
+  binance:::GET(
     "/api/v3/ticker/price",
     query = list(
       symbol = symbol
     ),
     simplifyVector = TRUE
-  )
-    # as_tibble() %>%
-    # mutate(
-    #   symbol = symbol,
-    #   time = convert_time(time)
-    # ) %>%
-    # select(symbol, everything()) %>%
-    # clean_names()
+  ) %>% as_tibble()
 }
