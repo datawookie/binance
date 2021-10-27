@@ -32,6 +32,7 @@ wallet_coins <- function() {
 #'
 #' @inheritParams trade-parameters
 #' @inheritParams limit-5-30
+#' @param type Character. Select order type. Any of: "SPOT", "MARGIN", "FUTURES".
 #' @return A data frame.
 #' @export
 #'

@@ -12,6 +12,8 @@ wallet_daily_snapshot(
 )
 }
 \arguments{
+\item{type}{Character. Select order type. Any of: "SPOT", "MARGIN", "FUTURES".}
+
 \item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
 
 \item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}
