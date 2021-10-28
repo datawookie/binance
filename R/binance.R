@@ -5,7 +5,7 @@
 #' @importFrom janitor make_clean_names clean_names
 #' @importFrom digest hmac
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr when possibly
+#' @importFrom purrr when possibly map_dfr
 #' @importFrom stats setNames time
 #' @importFrom lubridate with_tz
 #' @importFrom tidyr unnest_wider
@@ -26,6 +26,7 @@ ORDER_TYPES = c("SPOT", "MARGIN", "FUTURES")
 #' @param interval Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
 #'   8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 #'   w = weeks and M = months.
+#' @param type Character. Select order type. Any of: "SPOT", "MARGIN", "FUTURES".
 NULL
 
 #' Limit with default 500 and maximum 1000.

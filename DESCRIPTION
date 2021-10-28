@@ -1,7 +1,7 @@
 Package: binance
 Type: Package
 Title: Wrapper for Binance API
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(given = c("Andrew", "B."),
              family = "Collier",
