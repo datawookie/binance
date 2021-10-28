@@ -11,7 +11,7 @@
 #' wallet_dust_transfer("ENJ")
 #' }
 wallet_dust_transfer <- function(coin) {
-  dust <- binance:::POST(
+  dust <- POST(
     "/sapi/v1/asset/dust",
     query = list(
       asset = coin
@@ -48,7 +48,7 @@ wallet_dust_log <- function(
   start_time = NULL,
   end_time = NULL
 ) {
-  dribblets <- binance:::GET(
+  dribblets <- GET(
     "/sapi/v1/asset/dribblet",
     query = list(
       startTime = time_to_timestamp(start_time),

@@ -8,6 +8,8 @@ wallet_deposit_address(coin, network = NULL)
 }
 \arguments{
 \item{coin}{Coin.}
+
+\item{network}{Blockchain network.}
 }
 \value{
 A data frame.
