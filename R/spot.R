@@ -49,6 +49,7 @@ spot_account <- function() {
 #' Exposes the \code{GET /api/v3/myTrades} endpoint.
 #'
 #' @inheritParams trade-parameters
+#' @inheritParams limit-500-1000
 #' @return A data frame.
 #' @export
 #'
@@ -105,7 +106,7 @@ spot_trades_list <- function(
 #' }
 spot_open_orders <- function(symbol) {
   log_debug("Retrieving open orders on {symbol}.")
-  orders <- binance:::GET(
+  orders <- GET(
     "/api/v3/openOrders",
     query = list(
       symbol = convert_symbol(symbol)

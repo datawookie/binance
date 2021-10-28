@@ -12,6 +12,9 @@ spot_trades_list(symbol, start_time = NULL, end_time = NULL, limit = 500)
 \item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
 
 \item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}
+
+\item{limit}{Maximum number of records in result. Default is 500 and maximum
+is 1000.}
 }
 \value{
 A data frame.

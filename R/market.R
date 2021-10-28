@@ -32,7 +32,7 @@ market_server_time <- function() {
 #' @examples
 #' market_exchange_info()
 market_exchange_info <- function() {
-  info <- binance:::GET("/api/v3/exchangeInfo")
+  info <- GET("/api/v3/exchangeInfo")
 
   info$symbols <- lapply(info$symbols, function(symbol) {
     symbol$permissions <- list(unlist(symbol$permissions))
@@ -77,7 +77,7 @@ market_klines <- function(
 ) {
   log_debug("Retrieving k-lines on {symbol}.")
   symbol <- convert_symbol(symbol)
-  klines <- binance:::GET(
+  klines <- GET(
     "/api/v3/klines",
     query = list(
       symbol = symbol,
@@ -150,7 +150,7 @@ market_average_price <- function(symbol) {
 #'
 #' @inheritParams trade-parameters
 #'
-#' @return
+#' @return A data frame.
 #' @export
 #'
 #' @examples
@@ -179,14 +179,14 @@ market_recent_trades <- function(symbol) {
 #'
 #' @inheritParams trade-parameters
 #'
-#' @return
+#' @return A data frame.
 #' @export
 #'
 #' @examples
 #' market_price_ticker("BTCUSDT")
 market_price_ticker <- function(symbol) {
   symbol <- convert_symbol(symbol)
-  binance:::GET(
+  GET(
     "/api/v3/ticker/price",
     query = list(
       symbol = symbol

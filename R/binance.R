@@ -5,10 +5,11 @@
 #' @importFrom janitor make_clean_names clean_names
 #' @importFrom digest hmac
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr when possibly
+#' @importFrom purrr when possibly map map_dfr
 #' @importFrom stats setNames time
 #' @importFrom lubridate with_tz
 #' @importFrom tidyr unnest_wider
+#' @importFrom utils data
 NULL
 
 USER_AGENT <- user_agent("https://github.com/datawookie/binance")
@@ -26,6 +27,8 @@ ORDER_TYPES = c("SPOT", "MARGIN", "FUTURES")
 #' @param interval Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
 #'   8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 #'   w = weeks and M = months.
+#'@param type Trade type.
+#'@param network Blockchain network.
 NULL
 
 #' Limit with default 500 and maximum 1000.
@@ -61,6 +64,14 @@ globalVariables(
     "locked",
     "order_list_id",
     "coin",
-    ""
+    "address_tag",
+    "balances",
+    "begins_with",
+    "client_order_id",
+    "is_buyer",
+    "operate_time",
+    "tag",
+    "trades",
+    "update_time"
   )
 )

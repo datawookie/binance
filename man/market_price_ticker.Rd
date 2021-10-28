@@ -10,7 +10,7 @@ market_price_ticker(symbol)
 \item{symbol}{Symbol.}
 }
 \value{
-
+A data frame.
 }
 \description{
 Exposes the \code{GET /api/v3/ticker/price} endpoint.

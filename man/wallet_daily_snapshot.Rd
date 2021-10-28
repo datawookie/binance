@@ -12,6 +12,8 @@ wallet_daily_snapshot(
 )
 }
 \arguments{
+\item{type}{Trade type.}
+
 \item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
 
 \item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}

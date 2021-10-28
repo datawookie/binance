@@ -10,7 +10,7 @@ market_recent_trades(symbol)
 \item{symbol}{Symbol.}
 }
 \value{
-
+A data frame.
 }
 \description{
 Exposes the \code{GET /api/v3/trades} endpoint.
