@@ -8,6 +8,16 @@ convert_time <- function(time, tz = "UTC") {
   }
 }
 
+parse_time <- function(time, tz = "UTC") {
+  time <- as.POSIXct(time, tz = tz)
+
+  if (!is.na(tz)) {
+    with_tz(time, tz)
+  } else {
+    time
+  }
+}
+
 convert_symbol <- function(symbol) {
   sub("/", "", symbol)
 }
@@ -49,4 +59,11 @@ signature <- function(query = NA, body = NA, key = NA) {
     algo = "sha256",
     serialize = FALSE
   )
+}
+
+fix_types <- function(.data) {
+  .data %>%
+    mutate_at(vars(ends_with("_time")), parse_time) %>%
+    mutate_at(vars(matches("amount")), as.numeric) %>%
+    mutate_at(vars(matches("fee")), as.numeric)
 }

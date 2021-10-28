@@ -28,5 +28,6 @@ Imports:
     tidyr
 RoxygenNote: 7.1.2
 Suggests: 
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidyquant
 Config/testthat/edition: 3
