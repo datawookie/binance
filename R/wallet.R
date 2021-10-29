@@ -45,9 +45,7 @@ wallet_daily_snapshot <- function(
   end_time = NULL,
   limit = 5
 ) {
-  if (!(type %in% ORDER_TYPES)) {
-    stop("Invalid order type. Options are ", paste(ORDER_TYPES, collapse = ", "), ".", sep = "")
-  }
+  check_order_type(type)
 
   GET(
     "/sapi/v1/accountSnapshot",

@@ -16,8 +16,6 @@ spot_account <- function() {
     security_type = "USER_DATA"
   )
 
-  print(account)
-
   names(account) <- make_clean_names(names(account))
 
   account$commission <- account[
@@ -41,7 +39,7 @@ spot_account <- function() {
     mutate_at(c("free", "locked"), as.numeric) %>%
     filter(free > 0 | locked > 0)
 
-  acccount$update_time <- parse_time(account$update_time)
+  account$update_time <- parse_time(account$update_time)
 
   account$permissions <- unlist(account$permissions)
 

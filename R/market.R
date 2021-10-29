@@ -86,31 +86,32 @@ market_klines <- function(
       endTime = time_to_timestamp(end_time),
       limit = limit
     ),
-    simplifyVector = TRUE
+    simplifyVector = FALSE
   )
 
-  colnames(klines) <- c(
-      "open_time",
-      "open",
-      "high",
-      "low",
-      "close",
-      "volume",
-      "close_time",
-      "quote_volume",
-      "trades",
-      "taker_buy_base_volume",
-      "taker_buy_quote_volume",
-      "ignore"
-    )
-
   klines %>%
+    map_dfr(function(kline) {
+      as.data.frame(kline, col.names = c(
+        "open_time",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "close_time",
+        "quote_volume",
+        "trades",
+        "taker_buy_base_volume",
+        "taker_buy_quote_volume",
+        "ignore"
+      ))
+    }) %>%
     as_tibble() %>%
     mutate(
       symbol = symbol,
       trades = as.integer(trades)
       ) %>%
-    mutate_at(vars(ends_with("_time")), parse_time) %>%
+    fix_types() %>%
     mutate_at(vars(open:volume), as.numeric) %>%
     select(symbol, open_time, close_time, everything(), -ignore) %>%
     when(

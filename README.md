@@ -61,8 +61,8 @@ The Binance API is extensive. Below is the current coverage of the
 -   [ ] `POST /sapi/v1/account/enableFastWithdrawSwitch (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/capital/withdraw/apply (HMAC SHA256)`
 -   [x] `GET /sapi/v1/capital/deposit/hisrec (HMAC SHA256)`
--   [ ] `GET /sapi/v1/capital/deposit/address (HMAC SHA256)`
--   [ ] `GET /sapi/v1/capital/withdraw/history (HMAC SHA256)`
+-   [x] `GET /sapi/v1/capital/deposit/address (HMAC SHA256)`
+-   [x] `GET /sapi/v1/capital/withdraw/history (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/account/status`
 -   [ ] `GET /sapi/v1/account/apiTradingStatus (HMAC SHA256)`
 -   [x] `GET /sapi/v1/asset/dribblet (HMAC SHA256)`
@@ -118,8 +118,8 @@ The Binance API is extensive. Below is the current coverage of the
 -   [ ] `GET /api/v3/ticker/24hr`
 -   [ ] `GET /api/v3/ticker/price`
 -   [ ] `GET /api/v3/ticker/bookTicker`
--   [ ] `POST /api/v3/order/test (HMAC SHA256)`
--   [ ] `POST /api/v3/order (HMAC SHA256)`
+-   [x] `POST /api/v3/order/test (HMAC SHA256)`
+-   [x] `POST /api/v3/order (HMAC SHA256)`
 -   [ ] `DELETE /api/v3/order (HMAC SHA256)`
 -   [ ] `DELETE /api/v3/openOrders`
 -   [ ] `GET /api/v3/order (HMAC SHA256)`
