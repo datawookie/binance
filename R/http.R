@@ -17,16 +17,6 @@ check_response <- function(response) {
   }
 }
 
-# Alternative API clusters:
-#
-# api1.binance.com
-# api2.binance.com
-# api3.binance.com
-#
-BASE_URL <- "https://api.binance.com"
-#
-# Base URL for testing: https://testnet.binance.vision/.
-
 #' Set or query API base URL
 #'
 #' @param url Base URL.
@@ -38,10 +28,10 @@ BASE_URL <- "https://api.binance.com"
 #' base_url("https://testnet.binance.vision/")
 base_url <- function(url = NULL) {
   if (!is.null(url)) {
-    binance:::BASE_URL <<- url
+    cache$BASE_URL <- url
   }
 
-  BASE_URL
+  cache$BASE_URL
 }
 
 #' GET
@@ -61,7 +51,7 @@ GET <- function(
   simplifyVector = FALSE,
   security_type = "NONE"
 ) {
-  url <- modify_url(BASE_URL, path = path)
+  url <- modify_url(cache$BASE_URL, path = path)
   log_debug("GET {url}.")
 
   signed <- security_type %in% c("USER_DATA", "TRADE")
@@ -113,7 +103,7 @@ POST <- function(
   simplifyVector = FALSE,
   security_type = "NONE"
 ) {
-  url <- modify_url(BASE_URL, path = path)
+  url <- modify_url(cache$BASE_URL, path = path)
   log_debug("POST {url}.")
 
   signed <- security_type %in% c("USER_DATA", "TRADE")
@@ -138,6 +128,10 @@ POST <- function(
     query["timestamp"] <- time_to_timestamp()
     query["signature"] <- signature(query)
   }
+
+  # Drop NULL components in query.
+  #
+  query <- query[!sapply(query, is.null)]
 
   response <- httr::POST(
     url,
