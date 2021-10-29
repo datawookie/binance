@@ -12,7 +12,7 @@ wallet_daily_snapshot(
 )
 }
 \arguments{
-\item{type}{Trade type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.}
+\item{type}{Order type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.}
 
 \item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
 

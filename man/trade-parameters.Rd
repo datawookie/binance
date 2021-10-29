@@ -16,7 +16,7 @@
 8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 w = weeks and M = months.}
 
-\item{type}{Trade type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.}
+\item{type}{Order type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.}
 
 \item{network}{Blockchain network.}
 }

@@ -193,5 +193,6 @@ market_price_ticker <- function(symbol) {
       symbol = symbol
     ),
     simplifyVector = TRUE
-  ) %>% as_tibble()
+  ) %>% as_tibble() %>%
+    fix_types()
 }

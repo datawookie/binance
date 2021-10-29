@@ -58,24 +58,32 @@ spot_new_order <- function(
 #'
 #' Exposes the \code{GET /api/v3/openOrders} endpoint.
 #'
+#' @inheritParams trade-parameters
 #' @return A data frame.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' spot_open_orders()
+#' spot_open_orders("ETHUSDT")
 #' }
-spot_open_orders <- function(symbol) {
-  binance:::GET(
+spot_open_orders <- function(symbol = NULL) {
+  orders <- GET(
     "/api/v3/openOrders",
     query = list(
-      symbol = symbol
+      symbol = convert_symbol(symbol)
     ),
     simplifyVector = FALSE,
     security_type = "USER_DATA"
-  ) %>%
-    bind_rows() %>%
-    clean_names() %>%
-    select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
-    fix_types()
+  )
+
+  if (length(orders)) {
+    orders %>%
+      bind_rows() %>%
+      clean_names() %>%
+      select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
+      fix_types()
+  } else {
+    NULL
+  }
 }

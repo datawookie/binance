@@ -77,6 +77,10 @@ GET <- function(
     query["signature"] <- signature(query)
   }
 
+  # Drop NULL components in query.
+  #
+  query <- query[!sapply(query, is.null)]
+
   response <- httr::GET(
     url,
     query = query,
