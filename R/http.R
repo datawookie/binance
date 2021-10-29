@@ -27,9 +27,18 @@ BASE_URL <- "https://api.binance.com"
 #
 # Base URL for testing: https://testnet.binance.vision/.
 
+#' Set or query API base URL
+#'
+#' @param url Base URL.
+#'
+#' @return URL string.
+#' @export
+#'
+#' @examples
+#' base_url("https://testnet.binance.vision/")
 base_url <- function(url = NULL) {
   if (!is.null(url)) {
-    BASE_URL <<- url
+    binance:::BASE_URL <<- url
   }
 
   BASE_URL

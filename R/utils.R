@@ -1,15 +1,9 @@
-convert_time <- function(time, tz = "UTC") {
-  time <- as.POSIXct(as.numeric(time) / 1000, origin = "1970-01-01")
-
-  if (!is.na(tz)) {
-    with_tz(time, tz)
-  } else {
-    time
-  }
-}
-
 parse_time <- function(time, tz = "UTC") {
-  time <- as.POSIXct(time, tz = tz)
+  if (is.numeric(time)) {
+    time <- as.POSIXct(as.numeric(time) / 1000, origin = "1970-01-01")
+  } else {
+    time <- as.POSIXct(time, tz = tz)
+  }
 
   if (!is.na(tz)) {
     with_tz(time, tz)

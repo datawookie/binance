@@ -16,6 +16,9 @@ USER_AGENT <- user_agent("https://github.com/datawookie/binance")
 
 ORDER_TYPES = c("SPOT", "MARGIN", "FUTURES")
 
+SPOT_ORDER_TYPES = c("LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER")
+SPOT_ORDER_SIDES = c("BUY", "SELL")
+
 #' Parameters for trade functions
 #'
 #' @name trade-parameters

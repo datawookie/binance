@@ -23,7 +23,7 @@ wallet_dust_transfer <- function(coin) {
   dust$transferResult <- dust$transferResult %>%
     bind_rows() %>%
     clean_names() %>%
-    mutate(operate_time = convert_time(operate_time)) %>%
+    mutate(operate_time = parse_time(operate_time)) %>%
     mutate_at(vars(ends_with("amount")), as.numeric) %>%
     list()
 
@@ -61,7 +61,7 @@ wallet_dust_log <- function(
       dribblet$details <- dribblet$userAssetDribbletDetails %>%
         bind_rows() %>%
         clean_names() %>%
-        mutate(operate_time = convert_time(operate_time)) %>%
+        mutate(operate_time = parse_time(operate_time)) %>%
         mutate_at(vars(ends_with("amount")), as.numeric) %>%
         list()
       dribblet$userAssetDribbletDetails <- NULL
@@ -71,6 +71,6 @@ wallet_dust_log <- function(
   dribblets %>%
     bind_rows() %>%
     clean_names() %>%
-    mutate(operate_time = convert_time(operate_time)) %>%
+    mutate(operate_time = parse_time(operate_time)) %>%
     mutate_at(vars(ends_with("amount")), as.numeric)
 }

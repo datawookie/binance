@@ -16,6 +16,8 @@ spot_account <- function() {
     security_type = "USER_DATA"
   )
 
+  print(account)
+
   names(account) <- make_clean_names(names(account))
 
   account$commission <- account[
@@ -38,6 +40,8 @@ spot_account <- function() {
     bind_rows() %>%
     mutate_at(c("free", "locked"), as.numeric) %>%
     filter(free > 0 | locked > 0)
+
+  acccount$update_time <- parse_time(account$update_time)
 
   account$permissions <- unlist(account$permissions)
 
@@ -81,7 +85,7 @@ spot_trades_list <- function(
   if (nrow(trades)) {
     trades %>%
       mutate(
-        time = convert_time(time),
+        time = parse_time(time),
         side = ifelse(is_buyer, "BUY", "SELL")
         ) %>%
       mutate_at(c("price", "qty", "quote_qty", "commission"), as.numeric) %>%
@@ -118,7 +122,7 @@ spot_open_orders <- function(symbol) {
 
   if (nrow(orders)) {
     orders %>%
-      mutate_at(vars(ends_with("time")), convert_time) %>%
+      mutate_at(vars(ends_with("time")), parse_time) %>%
       mutate_at(vars(ends_with("qty"), ends_with("price")), as.numeric) %>%
       select(symbol, time, everything(), -order_list_id, -client_order_id)
   } else {
