@@ -64,7 +64,7 @@ wallet_daily_snapshot <- function(
     unnest_wider(data) %>%
     clean_names() %>%
     mutate(
-      update_time = convert_time(update_time),
+      update_time = parse_time(update_time),
       # update_time = floor_date(update_time, unit = "days"),
       balances = lapply(balances, function(balance) {
         bind_rows(balance) %>%

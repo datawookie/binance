@@ -19,7 +19,7 @@ market_ping <- function() {
 #' @examples
 #' market_server_time()
 market_server_time <- function() {
-  GET("/api/v3/time") %>% convert_time()
+  GET("/api/v3/time") %>% parse_time()
 }
 
 #' Current exchange trading rules and symbol information
@@ -47,7 +47,7 @@ market_exchange_info <- function() {
 
   info$rateLimits <- info$rateLimits %>% bind_rows() %>% clean_names()
 
-  info$serverTime <- convert_time(info$serverTime)
+  info$serverTime <- parse_time(info$serverTime)
 
   names(info) <- make_clean_names(names(info))
 
@@ -110,7 +110,7 @@ market_klines <- function(
       symbol = symbol,
       trades = as.integer(trades)
       ) %>%
-    mutate_at(vars(ends_with("_time")), convert_time) %>%
+    mutate_at(vars(ends_with("_time")), parse_time) %>%
     mutate_at(vars(open:volume), as.numeric) %>%
     select(symbol, open_time, close_time, everything(), -ignore) %>%
     when(
@@ -167,7 +167,7 @@ market_recent_trades <- function(symbol) {
     as_tibble() %>%
     mutate(
       symbol = symbol,
-      time = convert_time(time)
+      time = parse_time(time)
     ) %>%
     select(symbol, everything()) %>%
     clean_names()
