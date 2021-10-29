@@ -36,7 +36,7 @@ TIME_IN_FORCE = c("GTC", "IOC", "FOK")
 #' @param interval Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
 #'   8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 #'   w = weeks and M = months.
-#' @param type Trade type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.
+#' @param type Order type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.
 #' @param network Blockchain network.
 NULL
 
