@@ -2,12 +2,15 @@
 #'
 #' Exposes the \code{GET /api/v3/account} endpoint.
 #'
+#' @name spot-account
 #' @return A data frame.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' spot_account()
+#' # Just retrieve balances.
+#' spot_account_balances()
 #' }
 spot_account <- function() {
   account <- GET(
@@ -44,6 +47,12 @@ spot_account <- function() {
   account$permissions <- unlist(account$permissions)
 
   account
+}
+
+#' @rdname spot-account
+#' @export
+spot_account_balances <- function() {
+  spot_account()$balances
 }
 
 #' Get current account trades list

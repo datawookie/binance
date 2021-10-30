@@ -20,6 +20,6 @@ Exposes the \code{GET /sapi/v1/capital/deposit/address} endpoint.
 \examples{
 \dontrun{
 wallet_deposit_address("ETH")
-wallet_deposit_address("ETH", "BSC")
+wallet_deposit_address("BNB", network = "BSC")
 }
 }

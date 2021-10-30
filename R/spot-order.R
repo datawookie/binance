@@ -1,7 +1,9 @@
-#' Test new order
+#' Create new order
 #'
 #' Exposes the \code{POST /api/v3/order/test} endpoint.
 #'
+#' @name spot-new-order
+#' @inheritParams trade-parameters
 #' @return A data frame.
 #' @export
 #'
@@ -10,19 +12,19 @@
 #' spot_new_order()
 #' }
 spot_new_order <- function(
+  order_type,
   symbol,
   side,
   quantity,
   price = NULL,
-  type = "MARKET",
   time_in_force = NULL,
   test = FALSE
 ) {
-  check_spot_order_type(type)
+  check_spot_order_type(order_type)
   check_spot_order_side(side)
   check_time_in_force(time_in_force)
 
-  if (type %in% c("LIMIT", "STOP_LOSS_LIMIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER") && is.null(price)) {
+  if (order_type %in% c("LIMIT", "STOP_LOSS_LIMIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER") && is.null(price)) {
     stop("Must specify price.")
   }
 
@@ -38,7 +40,7 @@ spot_new_order <- function(
       side = side,
       quantity = quantity,
       price = price,
-      type = type,
+      type = order_type,
       timeInForce = time_in_force
     ),
     simplifyVector = FALSE,
@@ -53,6 +55,18 @@ spot_new_order <- function(
     select(-order_list_id, -client_order_id, -cummulative_quote_qty, -price) %>%
     fix_types() %>%
     fix_columns()
+}
+
+#' @rdname spot-new-order
+#' @export
+spot_new_market_order <- function(...) {
+  spot_new_order("MARKET", ...)
+}
+
+#' @rdname spot-new-order
+#' @export
+spot_new_limit_order <- function(...) {
+  spot_new_order("LIMIT", ...)
 }
 
 #' Get open orders

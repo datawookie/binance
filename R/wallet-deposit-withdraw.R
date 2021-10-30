@@ -48,19 +48,20 @@ wallet_deposit_history <- function(
 #' Exposes the \code{GET /sapi/v1/capital/deposit/address} endpoint.
 #'
 #' @inheritParams trade-parameters
-#' @inheritParams limit-1000-1000
 #' @return A data frame.
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' wallet_deposit_address("ETH")
-#' wallet_deposit_address("ETH", "BSC")
+#' wallet_deposit_address("BNB", network = "BSC")
 #' }
 wallet_deposit_address <- function(
   coin,
   network = NULL
 ) {
+  coin <- validate_coin(coin)
+
   GET(
     "/sapi/v1/capital/deposit/address",
     simplifyVector = FALSE,
