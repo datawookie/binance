@@ -119,7 +119,7 @@ spot_open_orders <- function(symbol) {
 
   if (nrow(orders)) {
     orders %>%
-      mutate_at(vars(ends_with("time")), convert_time) %>%
+      mutate_at(vars(ends_with("time")), parse_time) %>%
       mutate_at(vars(ends_with("qty"), ends_with("price")), as.numeric) %>%
       select(symbol, time, everything(), -order_list_id, -client_order_id)
   } else {
