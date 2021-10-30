@@ -1,3 +1,5 @@
 test_that("spot account", {
-  print(spot_account())
+  account <- spot_account()
+
+  expect_equal(account$account_type, "SPOT")
 })

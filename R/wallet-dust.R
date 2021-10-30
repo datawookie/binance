@@ -11,6 +11,8 @@
 #' wallet_dust_transfer("ENJ")
 #' }
 wallet_dust_transfer <- function(coin) {
+  coin <- validate_coin(coin)
+
   dust <- POST(
     "/sapi/v1/asset/dust",
     query = list(

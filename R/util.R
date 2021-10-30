@@ -60,3 +60,12 @@ fix_types <- function(.data) {
     mutate_at(vars(ends_with("time")), parse_time) %>%
     mutate_at(vars(matches(c("amount", "fee", "qty", "price"))), as.numeric)
 }
+
+validate_coin <- function(coin) {
+  coin <- toupper(coin)
+  if (coin %in% COINS) {
+    coin
+  } else {
+    stop("Not a valid coin: '", coin, "'.", call. = FALSE)
+  }
+}

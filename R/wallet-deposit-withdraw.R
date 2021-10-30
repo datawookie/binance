@@ -17,7 +17,9 @@ wallet_deposit_history <- function(
   end_time = NULL,
   limit = 1000
 ) {
-  GET(
+  coin <- validate_coin(coin)
+
+  history <- GET(
     "/sapi/v1/capital/deposit/hisrec",
     simplifyVector = FALSE,
     security_type = "USER_DATA",
@@ -27,11 +29,18 @@ wallet_deposit_history <- function(
       endTime = time_to_timestamp(end_time),
       limit = limit
     )
-  ) %>%
+  )
+
+  history <- history %>%
     bind_rows() %>%
     clean_names() %>%
-    fix_types() %>%
-    select(-address_tag)
+    fix_types()
+
+  # The address_tag column doesn't seem to be present on testnet.
+  #
+  try(history <- history %>% select(-address_tag), silent = TRUE)
+
+  history
 }
 
 #' Deposit address
