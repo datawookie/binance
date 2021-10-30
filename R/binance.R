@@ -22,10 +22,6 @@ TRANSFER_TYPES = c("MAIN_FUNDING", "FUNDING_MAIN", "FUNDING_UMFUTURE", "UMFUTURE
 SPOT_ORDER_TYPES = c("LIMIT", "MARKET", "STOP_LOSS", "STOP_LOSS_LIMIT", "TAKE_PROFIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER")
 SPOT_ORDER_SIDES = c("BUY", "SELL")
 
-# GTC — (Good Til Canceled) Order will remain on the book unless canceled.
-# IOC —	(Immediate Or Cancel) Try to fill as much as possible before it expires.
-# FOK — (Fill Or Kill) Order will expire if full order cannot be filled.
-#
 TIME_IN_FORCE = c("GTC", "IOC", "FOK")
 
 #' Parameters for trade functions

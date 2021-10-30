@@ -101,37 +101,3 @@ spot_trades_list <- function(
     NULL
   }
 }
-
-#' Get current account trades list
-#'
-#' Exposes the \code{GET /api/v3/openOrders} endpoint.
-#'
-#' @inheritParams trade-parameters
-#' @return A data frame.
-#' @export
-#'
-#' @examples
-#' \dontrun{
-#' spot_open_orders("ENJ/ETH")
-#' }
-spot_open_orders <- function(symbol) {
-  log_debug("Retrieving open orders on {symbol}.")
-  orders <- GET(
-    "/api/v3/openOrders",
-    query = list(
-      symbol = convert_symbol(symbol)
-    ),
-    security_type = "USER_DATA"
-  ) %>%
-    bind_rows() %>%
-    clean_names()
-
-  if (nrow(orders)) {
-    orders %>%
-      mutate_at(vars(ends_with("time")), parse_time) %>%
-      mutate_at(vars(ends_with("qty"), ends_with("price")), as.numeric) %>%
-      select(symbol, time, everything(), -order_list_id, -client_order_id)
-  } else {
-    NULL
-  }
-}
