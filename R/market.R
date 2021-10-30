@@ -185,7 +185,7 @@ market_recent_trades <- function(symbol) {
 #'
 #' @examples
 #' market_price_ticker("BTCUSDT")
-market_price_ticker <- function(symbol) {
+market_price_ticker <- function(symbol = NULL) {
   symbol <- convert_symbol(symbol)
   GET(
     "/api/v3/ticker/price",

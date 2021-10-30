@@ -4,7 +4,7 @@
 \alias{market_price_ticker}
 \title{Latest price for a symbol}
 \usage{
-market_price_ticker(symbol)
+market_price_ticker(symbol = NULL)
 }
 \arguments{
 \item{symbol}{Symbol.}

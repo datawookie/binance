@@ -12,8 +12,12 @@ parse_time <- function(time, tz = "UTC") {
   }
 }
 
-convert_symbol <- function(symbol) {
-  sub("/", "", symbol)
+convert_symbol <- function(symbol = NULL) {
+  if (is.null(symbol)) {
+    NULL
+  } else {
+    sub("/", "", symbol)
+  }
 }
 
 time_to_timestamp <- function(time = NA, tz = "UTC") {

@@ -14,7 +14,8 @@ spot_new_order(
   quantity,
   price = NULL,
   time_in_force = NULL,
-  test = FALSE
+  test = FALSE,
+  fills = TRUE
 )
 
 spot_new_market_order(...)
@@ -27,6 +28,24 @@ spot_new_limit_order(...)
 \code{"TAKE_PROFIT_LIMIT"} or \code{"LIMIT_MAKER"}.}
 
 \item{symbol}{Symbol.}
+
+\item{side}{Trade side. Either \code{"BUY"} or \code{"SELL"}.}
+
+\item{quantity}{Amount to buy or sell.}
+
+\item{price}{Price at which to buy or sell.}
+
+\item{time_in_force}{Time for which order is valid. Options are: \code{"GTC"}
+ — (Good Til Canceled) order will remain on the book unless canceled;
+ \code{"IOC"} —    (Immediate Or Cancel) try to fill as much as possible before
+ it expires; or \code{"FOK"} — (Fill Or Kill) Order will expire if full
+order cannot be filled.}
+
+\item{test}{Is this just a test?}
+
+\item{fills}{Whether to returns \code{fills} element.}
+
+\item{...}{Further arguments passed to or from other methods.}
 }
 \value{
 A data frame.
