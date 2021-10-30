@@ -20,3 +20,8 @@ test_that("signature", {
     "0fd168b8ddb4876a0358a8d14d0c9f3da0e9b20c5d52b2a00fcf7d1c602f9a77"
   )
 })
+
+test_that("valid coins", {
+  expect_equal(validate_coin("ETH"), "ETH")
+  expect_error(validate_coin("TRASH"), "Not a valid coin")
+})

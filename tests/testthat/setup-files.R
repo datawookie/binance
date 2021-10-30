@@ -1,5 +1,3 @@
-log_threshold(DEBUG)
-
 base_url("https://testnet.binance.vision/")
 
 message("Base URL:", base_url())
