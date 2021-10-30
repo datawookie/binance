@@ -1,11 +1,12 @@
 TIMEOUT_SECONDS = 30
 
 check_response <- function(response) {
-  if (http_type(response) != "application/json") {
+  if (is.null(content(response))) {
+    warning("API returned an empty result.")
+    FALSE
+  } else if (http_type(response) != "application/json") {
     stop("API did not return JSON.", call. = FALSE)
-  }
-
-  if (status_code(response) != 200) {
+  } else if (status_code(response) != 200) {
     stop(
       sprintf(
         "Binance API request failed [%s] %s",
@@ -14,6 +15,8 @@ check_response <- function(response) {
       ),
       call. = FALSE
     )
+  } else {
+    TRUE
   }
 }
 
@@ -89,12 +92,14 @@ GET <- function(
     timeout(TIMEOUT_SECONDS)
   )
 
-  check_response(response)
-
-  fromJSON(
-    content(response, as = "text"),
-    simplifyVector = simplifyVector
-  )
+  if (check_response(response)) {
+    fromJSON(
+      content(response, as = "text"),
+      simplifyVector = simplifyVector
+    )
+  } else {
+    NULL
+  }
 }
 
 
@@ -145,12 +150,14 @@ POST <- function(
     timeout(TIMEOUT_SECONDS)
   )
 
-  check_response(response)
-
-  fromJSON(
-    content(response, as = "text"),
-    simplifyVector = simplifyVector
-  )
+  if (check_response(response)) {
+    fromJSON(
+      content(response, as = "text"),
+      simplifyVector = simplifyVector
+    )
+  } else {
+    NULL
+  }
 }
 
 #' Borrowed from httr:::compact.
