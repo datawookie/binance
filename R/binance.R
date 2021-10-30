@@ -40,6 +40,9 @@ TIME_IN_FORCE = c("GTC", "IOC", "FOK")
 #'   8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 #'   w = weeks and M = months.
 #' @param type Order type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.
+#' @param order_type Order type. One of \code{"LIMIT"}, \code{"MARKET"},
+#'   \code{"STOP_LOSS"}, \code{"STOP_LOSS_LIMIT"}, \code{"TAKE_PROFIT"},
+#'   \code{"TAKE_PROFIT_LIMIT"} or \code{"LIMIT_MAKER"}.
 #' @param network Blockchain network.
 NULL
 

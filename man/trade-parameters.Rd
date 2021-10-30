@@ -18,6 +18,10 @@ w = weeks and M = months.}
 
 \item{type}{Order type. One of \code{"SPOT"}, \code{"MARGIN"} or \code{"FUTURES"}.}
 
+\item{order_type}{Order type. One of \code{"LIMIT"}, \code{"MARKET"},
+\code{"STOP_LOSS"}, \code{"STOP_LOSS_LIMIT"}, \code{"TAKE_PROFIT"},
+\code{"TAKE_PROFIT_LIMIT"} or \code{"LIMIT_MAKER"}.}
+
 \item{network}{Blockchain network.}
 }
 \description{
