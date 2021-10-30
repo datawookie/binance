@@ -50,8 +50,9 @@ spot_new_order <- function(
   order %>%
     as_tibble() %>%
     clean_names() %>%
-    select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
-    fix_types()
+    select(-order_list_id, -client_order_id, -cummulative_quote_qty, -price) %>%
+    fix_types() %>%
+    fix_columns()
 }
 
 #' Get open orders

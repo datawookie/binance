@@ -71,6 +71,7 @@ globalVariables(
   c(
     "open_time",
     "close_time",
+    "cummulative_quote_qty",
     "ignore",
     "free",
     "locked",

@@ -1,6 +1,9 @@
 base_url("https://testnet.binance.vision/")
 
-message("Base URL:", base_url())
+message("Base URL: ", base_url())
+
+message("XXX:", Sys.getenv("BINANCE_TESTNET_API_KEY"), ":YYY")
+message("XXX:", Sys.getenv("BINANCE_TESTNET_API_SECRET"), ":YYY")
 
 authenticate(
   key = Sys.getenv("BINANCE_TESTNET_API_KEY"),

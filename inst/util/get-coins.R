@@ -3,6 +3,8 @@ library(stringr)
 library(here)
 library(binance)
 
+# This information could also be retrieved from wallet_coins().
+
 COINS_SCRIPT <- here("R", "coins.R")
 
 symbols <- market_exchange_info()$symbols
