@@ -26,6 +26,7 @@ market_server_time <- function() {
 #'
 #' Exposes the \code{GET /api/v3/exchangeInfo} endpoint.
 #'
+#' @name market-exchange-info
 #' @return A \code{POSIXct} object.
 #' @export
 #'
@@ -52,6 +53,12 @@ market_exchange_info <- function() {
   names(info) <- make_clean_names(names(info))
 
   info
+}
+
+#' @rdname market-exchange-info
+#' @export
+market_exchange_symbols <- function() {
+  market_exchange_info()$symbols
 }
 
 #' K-Lines (candlestick bars) for a symbol
@@ -195,4 +202,53 @@ market_price_ticker <- function(symbol = NULL) {
     simplifyVector = TRUE
   ) %>% as_tibble() %>%
     fix_types()
+}
+
+
+#' Order book
+#'
+#' Exposes the \code{GET /api/v3/depth} endpoint.
+#'
+#' @inheritParams trade-parameters
+#'
+#' @return A data frame.
+#' @export
+#'
+#' @examples
+#' market_order_book("BTCUSDT")
+#' market_order_book(c("BTCUSDT", "TRXUSDT"))
+market_order_book <- function(symbol) {
+  if (length(symbol) > 1) {
+    map_dfr(symbol, market_order_book)
+  } else {
+    symbol <- convert_symbol(symbol)
+    orders <- binance:::GET(
+      "/api/v3/depth",
+      query = list(
+        symbol = symbol
+      ),
+      simplifyVector = TRUE
+    )
+
+    fix_matrix <- function(orders) {
+      if (length(orders)) {
+        orders <- orders %>%
+          as_tibble(.name_repair = "minimal") %>%
+          setNames(c("price", "qty")) %>%
+          mutate_all(as.numeric)
+      } else {
+        orders <- tibble(price = numeric(), qty = numeric())
+      }
+
+      orders %>% list()
+    }
+    orders$asks <- fix_matrix(orders$asks)
+    orders$bids <- fix_matrix(orders$bids)
+
+    orders %>%
+      as_tibble() %>%
+      mutate(symbol = symbol) %>%
+      clean_names() %>%
+      select(symbol, everything())
+  }
 }
