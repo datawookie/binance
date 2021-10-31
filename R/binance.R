@@ -15,6 +15,9 @@ USER_AGENT <- user_agent("https://github.com/datawookie/binance")
 
 ORDER_TYPES = c("SPOT", "MARGIN", "FUTURES")
 
+TRANSFER_TYPES = c("MAIN_FUNDING", "FUNDING_MAIN", "FUNDING_UMFUTURE", "UMFUTURE_FUNDING",
+                   "MARGIN_FUNDING", "FUNDING_MARGIN", "FUNDING_CMFUTURE", "CMFUTURE_FUNDING")
+
 #' Parameters for trade functions
 #'
 #' @name trade-parameters
