@@ -24,6 +24,6 @@ Exposes the \code{GET /sapi/v1/capital/deposit/hisrec} endpoint.
 }
 \examples{
 \dontrun{
-wallet_daily_snapshot("ETH")
+wallet_deposit_history("ETH")
 }
 }

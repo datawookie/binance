@@ -89,7 +89,7 @@ wallet_daily_snapshot <- function(
 #'
 #' @examples
 #' \dontrun{
-#' wallet_daily_snapshot("ETH")
+#' wallet_deposit_history("ETH")
 #' }
 wallet_deposit_history <- function(
   coin,
