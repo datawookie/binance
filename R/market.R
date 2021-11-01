@@ -19,7 +19,11 @@ market_ping <- function() {
 #' @examples
 #' market_server_time()
 market_server_time <- function() {
-  GET("/api/v3/time")$serverTime %>% parse_time()
+  time <- GET("/api/v3/time")$serverTime
+
+  log_debug("Timestamp: ", format_timestamp(time, seconds = FALSE), ".")
+
+  time %>% parse_time()
 }
 
 #' Current exchange trading rules and symbol information

@@ -32,9 +32,9 @@ check_response <- function(response) {
 base_url <- function(url = NULL) {
   if (!is.null(url)) {
     cache$BASE_URL <- url
+  } else {
+    cache$BASE_URL
   }
-
-  cache$BASE_URL
 }
 
 #' GET

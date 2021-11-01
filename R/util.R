@@ -1,6 +1,6 @@
 parse_time <- function(time, tz = "UTC") {
   if (is.numeric(time)) {
-    time <- as.POSIXct(as.numeric(time) / 1000, origin = "1970-01-01")
+    time <- as.POSIXct(time / 1000, origin = "1970-01-01")
   } else {
     time <- as.POSIXct(time, tz = tz)
   }
@@ -20,14 +20,26 @@ convert_symbol <- function(symbol = NULL) {
   }
 }
 
+format_timestamp <- function(time, seconds = TRUE) {
+  time <- as.numeric(time)
+
+  # Is time in seconds or milliseconds?
+  if (seconds) time <- time * 1000
+
+  sprintf("%.0f", time)
+}
+
 time_to_timestamp <- function(time = NA, tz = "UTC") {
   if (is.null(time)) {
     NULL
   } else {
-    if (is.na(time)) time <- Sys.time()
-    if (is.character(time)) time <- as.POSIXct(time, tz = tz)
+    if (is.na(time)) {
+      time <- Sys.time()
+    } else {
+      if (is.character(time)) time <- as.POSIXct(time, tz = tz)
+    }
 
-    sprintf("%.0f", as.numeric(time) * 1000)
+    format_timestamp(time)
   }
 }
 
