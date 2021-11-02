@@ -4,15 +4,15 @@
 #'
 #' @inheritParams trade-parameters
 #' @inheritParams limit-5-30
-#' @param ... Additional parameters to pass they query
+#' @param ... Further arguments passed to or from other methods.
 #' @return A data frame.
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' transferred_assets(type = "FUNDING_MAIN")
+#' wallet_asset_transfer(type = "FUNDING_MAIN")
 #' }
-transferred_assets <- function(
+wallet_asset_transfer <- function(
   type = "MAIN_FUNDING",
   start_time = NULL,
   end_time = NULL,
