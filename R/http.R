@@ -1,5 +1,9 @@
 TIMEOUT_SECONDS = 30
 
+HEADERS_DEFAULT = list(
+  "Content-Type" = 'application/json'
+)
+
 check_response <- function(response) {
   if (is.null(content(response))) {
     warning("API returned an empty result.")
@@ -52,14 +56,17 @@ GET <- function(
   path,
   query = list(),
   simplifyVector = FALSE,
-  security_type = "NONE"
+  security_type = "NONE",
+  base_url = NA
 ) {
-  url <- modify_url(cache$BASE_URL, path = path)
+  if (is.na(base_url)) base_url <- cache$BASE_URL
+
+  url <- modify_url(base_url, path = path)
   log_debug("GET {url}.")
 
   signed <- security_type %in% c("USER_DATA", "TRADE")
 
-  headers <- list()
+  headers <- HEADERS_DEFAULT
   #
   if (security_type %in% c("USER_DATA")) {
     binance_api_key <- cache_get(API_KEY)
@@ -108,15 +115,19 @@ GET <- function(
 POST <- function(
   path,
   query = list(),
+  body = NULL,
   simplifyVector = FALSE,
-  security_type = "NONE"
+  security_type = "NONE",
+  base_url = NA
 ) {
-  url <- modify_url(cache$BASE_URL, path = path)
+  if (is.na(base_url)) base_url <- cache$BASE_URL
+
+  url <- modify_url(base_url, path = path)
   log_debug("POST {url}.")
 
   signed <- security_type %in% c("USER_DATA", "TRADE")
 
-  headers <- list()
+  headers <- HEADERS_DEFAULT
   #
   if (security_type %in% c("USER_DATA")) {
     binance_api_key <- cache_get(API_KEY)
@@ -144,6 +155,7 @@ POST <- function(
   response <- httr::POST(
     url,
     query = query,
+    body = body,
     headers,
     USER_AGENT,
     timeout(TIMEOUT_SECONDS)

@@ -95,3 +95,11 @@ validate_coin <- function(coin) {
     stop("Not a valid coin: '", coin, "'.", call. = FALSE)
   }
 }
+
+flip_side <- function(side) {
+  if (side %in% c("BUY", "SELL")) {
+    if (side == "BUY") "SELL" else "BUY"
+  } else {
+    stop("Invalid side: '", side, "'.")
+  }
+}
