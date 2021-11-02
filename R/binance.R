@@ -42,6 +42,16 @@ TIME_IN_FORCE = c("GTC", "IOC", "FOK")
 #'   \code{"STOP_LOSS"}, \code{"STOP_LOSS_LIMIT"}, \code{"TAKE_PROFIT"},
 #'   \code{"TAKE_PROFIT_LIMIT"} or \code{"LIMIT_MAKER"}.
 #' @param network Blockchain network.
+#' @param fiat Fiat currency.
+#' @param side Side of the trade: \code{"BUY"} or \code{"SELL"}.
+NULL
+
+#' Parameters for pagination
+#'
+#' @name pagination
+#'
+#' @param page Page number.
+#' @param rows Number of records per page.
 NULL
 
 #' Parameters for transfer functions

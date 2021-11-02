@@ -26,6 +26,10 @@ w = weeks and M = months.}
 \code{"TAKE_PROFIT_LIMIT"} or \code{"LIMIT_MAKER"}.}
 
 \item{network}{Blockchain network.}
+
+\item{fiat}{Fiat currency.}
+
+\item{side}{Side of the trade: \code{"BUY"} or \code{"SELL"}.}
 }
 \description{
 Parameters for trade functions

@@ -4,12 +4,22 @@
 \alias{p2p_search}
 \title{Search P2P}
 \usage{
-p2p_search(asset, fiat, side, pay_types = NA, page = 1, rows = 10)
+p2p_search(coin, fiat, side, pay_types = c(), page = 1, rows = 10)
 }
 \arguments{
+\item{coin}{Coin.}
+
+\item{fiat}{Fiat currency.}
+
+\item{side}{Side of the trade: \code{"BUY"} or \code{"SELL"}.}
+
 \item{pay_types}{Options for payment. One or more of \code{"BANK"},
-\code{"WECHAT"} or \code{"ALIPAY"}. The default, \code{NA}, allows all
+\code{"WECHAT"} or \code{"ALIPAY"}. The default, \code{c()}, allows all
 payment options.}
+
+\item{page}{Page number.}
+
+\item{rows}{Number of records per page.}
 }
 \value{
 A data frame.
@@ -18,5 +28,15 @@ A data frame.
 Search P2P
 }
 \examples{
+# Grab the first page.
 p2p_search("USDT", "CNY", side = "BUY")
+# Grab the second page.
+p2p_search("USDT", "CNY", side = "BUY", page = 2)
+
+# Concatenate multiple pages.
+library(purrr)
+map_dfr(
+  1:3,
+  function(page) p2p_search("USDT", "CNY", side = "BUY", page = page)
+)
 }

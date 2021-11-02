@@ -1,7 +1,9 @@
 #' Search P2P
 #'
+#' @inheritParams trade-parameters
+#' @inheritParams pagination
 #' @param pay_types Options for payment. One or more of \code{"BANK"},
-#'   \code{"WECHAT"} or \code{"ALIPAY"}. The default, \code{NA}, allows all
+#'   \code{"WECHAT"} or \code{"ALIPAY"}. The default, \code{c()}, allows all
 #'   payment options.
 #'
 #' @return A data frame.
@@ -14,24 +16,24 @@
 #' p2p_search("USDT", "CNY", side = "BUY", page = 2)
 #'
 #' # Concatenate multiple pages.
+#' library(purrr)
 #' map_dfr(
 #'   1:3,
 #'   function(page) p2p_search("USDT", "CNY", side = "BUY", page = page)
 #' )
 p2p_search <- function(
-  asset,
+  coin,
   fiat,
   side,
-  pay_types = NA,
+  pay_types = c(),
   page = 1,
   rows = 10
 ) {
   body <- list(
     page = page,
     rows = rows,
-    # payTypes = pay_types,
-    payTypes = c(),
-    asset = asset,
+    payTypes = pay_types,
+    asset = coin,
     fiat = fiat,
     tradeType = side,
     publisherType = NULL
@@ -42,7 +44,7 @@ p2p_search <- function(
   #
   # '{"page":1,"rows":10,"payTypes":[],"asset":"USDT","tradeType":"BUY","fiat":"CNY","publisherType":null}'
   #
-  offers <- binance:::POST(
+  offers <- POST(
     "/bapi/c2c/v2/friendly/c2c/adv/search",
     body = body,
     base_url = "https://p2p.binance.com/"
