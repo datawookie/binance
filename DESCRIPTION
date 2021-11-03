@@ -6,8 +6,11 @@ Authors@R:
     c(person(given = c("Andrew", "B."),
              family = "Collier",
              role = c("aut", "cre", "cph"),
-             email = "andrew@fathomdata.dev")
-             )
+             email = "andrew@fathomdata.dev"),
+      person(given = "Bernardo",
+             family = "Lares",
+             role = c("ctb"),
+             email = "laresbernardo@gmail.com"))
 Description: Wrapper for the Binance API.
 License: GPL-3
 Encoding: UTF-8
