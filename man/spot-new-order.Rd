@@ -36,9 +36,9 @@ spot_new_limit_order(...)
 \item{price}{Price at which to buy or sell.}
 
 \item{time_in_force}{Time for which order is valid. Options are: \code{"GTC"}
- — (Good Til Canceled) order will remain on the book unless canceled;
- \code{"IOC"} —    (Immediate Or Cancel) try to fill as much as possible before
- it expires; or \code{"FOK"} — (Fill Or Kill) Order will expire if full
+— (Good Til Canceled) order will remain on the book unless canceled;
+\code{"IOC"} —    (Immediate Or Cancel) try to fill as much as possible before
+it expires; or \code{"FOK"} — (Fill Or Kill) Order will expire if full
 order cannot be filled.}
 
 \item{test}{Is this just a test?}

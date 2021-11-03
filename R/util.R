@@ -74,7 +74,7 @@ signature <- function(query = NA, body = NA, key = NA) {
 fix_types <- function(.data) {
   .data %>%
     mutate_at(vars(ends_with("time")), parse_time) %>%
-    mutate_at(vars(matches(c("amount", "fee", "qty", "price"))), as.numeric)
+    mutate_at(vars(matches(c("amount", "fee", "qty", "price", "^commission$"))), as.numeric)
 }
 
 fix_columns <- function(.data) {

@@ -11,7 +11,7 @@
 #'   — (Good Til Canceled) order will remain on the book unless canceled;
 #'   \code{"IOC"} —	(Immediate Or Cancel) try to fill as much as possible before
 #'   it expires; or \code{"FOK"} — (Fill Or Kill) Order will expire if full
-#'  order cannot be filled.
+#'   order cannot be filled.
 #' @param test Is this just a test?
 #' @param fills Whether to returns \code{fills} element.
 #' @param ... Further arguments passed to or from other methods.
@@ -59,7 +59,7 @@ spot_new_order <- function(
     security_type = "USER_DATA"
   )
 
-  order$fills <- order$fills %>% bind_rows() %>% list()
+  order$fills <- order$fills %>% bind_rows() %>% fix_types() %>% clean_names() %>% list()
 
   order %>%
     as_tibble() %>%
