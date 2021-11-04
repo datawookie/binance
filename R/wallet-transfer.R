@@ -3,6 +3,7 @@
 #' Exposes the \code{GET /sapi/v1/asset/transfer} endpoint.
 #'
 #' @inheritParams trade-parameters
+#' @inheritParams transfer-parameters
 #' @inheritParams limit-5-30
 #' @param ... Further arguments passed to or from other methods.
 #' @return A data frame.

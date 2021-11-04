@@ -42,6 +42,17 @@ TIME_IN_FORCE = c("GTC", "IOC", "FOK")
 #' @param network Blockchain network.
 NULL
 
+#' Parameters for transfer functions
+#'
+#' @name transfer-parameters
+#'
+#' @param type Transfer type. One of \code{"MAIN_FUNDING"},
+#'   \code{"FUNDING_MAIN"}, \code{"FUNDING_UMFUTURE"},
+#'   \code{"UMFUTURE_FUNDING"}, \code{"MARGIN_FUNDING"},
+#'   \code{"FUNDING_MARGIN"}, \code{"FUNDING_CMFUTURE"} or
+#'  \code{"CMFUTURE_FUNDING"}.
+NULL
+
 #' Limit with default 500 and maximum 1000.
 #'
 #' @name limit-500-1000
