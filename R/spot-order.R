@@ -33,7 +33,7 @@ spot_new_order <- function(
   fills = TRUE
 ) {
   check_spot_order_type(order_type)
-  check_spot_order_side(side)
+  check_order_side(side)
   check_time_in_force(time_in_force)
 
   if (order_type %in% c("LIMIT", "STOP_LOSS_LIMIT", "TAKE_PROFIT_LIMIT", "LIMIT_MAKER") && is.null(price)) {
@@ -123,4 +123,62 @@ spot_open_orders <- function(symbol = NULL) {
   } else {
     NULL
   }
+}
+
+#' Query an order
+#'
+#' Exposes the \code{GET /api/v3/order} endpoint.
+#'
+#' @inheritParams trade-parameters
+#' @param order_id Order ID.
+#' @return A data frame.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' spot_order_query("ETHUSDT", 42)
+#' }
+spot_order_query <- function(symbol, order_id) {
+  GET(
+    "/api/v3/order",
+    query = list(
+      symbol = convert_symbol(symbol),
+      orderId = order_id
+    ),
+    simplifyVector = FALSE,
+    security_type = "USER_DATA"
+  ) %>%
+    as_tibble() %>%
+    clean_names() %>%
+    select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
+    fix_types()
+}
+
+#' Cancel an order
+#'
+#' Exposes the \code{DELETE /api/v3/order} endpoint.
+#'
+#' @inheritParams trade-parameters
+#' @param order_id Order ID.
+#' @return A data frame.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' spot_order_cancel("ETHUSDT", 42)
+#' }
+spot_order_cancel <- function(symbol, order_id) {
+  DELETE(
+    "/api/v3/order",
+    query = list(
+      symbol = convert_symbol(symbol),
+      orderId = order_id
+    ),
+    simplifyVector = FALSE,
+    security_type = "USER_DATA"
+  ) %>%
+    as_tibble() %>%
+    clean_names() %>%
+    select(-order_list_id, -client_order_id, -orig_client_order_id, -cummulative_quote_qty) %>%
+    fix_types()
 }

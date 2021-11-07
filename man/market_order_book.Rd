@@ -4,10 +4,13 @@
 \alias{market_order_book}
 \title{Order book}
 \usage{
-market_order_book(symbol)
+market_order_book(symbol, side = NULL, limit = 100)
 }
 \arguments{
 \item{symbol}{Symbol.}
+
+\item{side}{Side of the trade. Either \code{"BUY"} (for bids) or \code{"SELL"}
+(for asks).}
 }
 \value{
 A data frame.

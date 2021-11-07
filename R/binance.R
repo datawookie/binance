@@ -8,7 +8,7 @@
 #' @importFrom purrr when possibly map map_dfr
 #' @importFrom stats setNames time
 #' @importFrom lubridate with_tz
-#' @importFrom tidyr unnest_wider
+#' @importFrom tidyr unnest unnest_wider
 #' @importFrom utils data
 NULL
 
@@ -30,6 +30,8 @@ TIME_IN_FORCE = c("GTC", "IOC", "FOK")
 #'
 #' @param coin Coin.
 #' @param symbol Symbol.
+#' @param side Side of the trade. Either \code{"BUY"} (for bids) or \code{"SELL"}
+#'   (for asks).
 #' @param start_time Start time. Something that can be coerced to \code{POSIXct}.
 #' @param end_time End time. Something that can be coerced to \code{POSIXct}.
 #' @param interval Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,

@@ -120,9 +120,9 @@ The Binance API is extensive. Below is the current coverage of the
 -   [ ] `GET /api/v3/ticker/bookTicker`
 -   [x] `POST /api/v3/order/test (HMAC SHA256)`
 -   [x] `POST /api/v3/order (HMAC SHA256)`
--   [ ] `DELETE /api/v3/order (HMAC SHA256)`
+-   [x] `DELETE /api/v3/order (HMAC SHA256)`
 -   [ ] `DELETE /api/v3/openOrders`
--   [ ] `GET /api/v3/order (HMAC SHA256)`
+-   [x] `GET /api/v3/order (HMAC SHA256)`
 -   [ ] `GET /api/v3/openOrders (HMAC SHA256)`
 -   [ ] `GET /api/v3/allOrders (HMAC SHA256)`
 -   [ ] `POST /api/v3/order/oco (HMAC SHA256)`

@@ -221,15 +221,18 @@ market_price_ticker <- function(symbol = NULL) {
 #' @examples
 #' market_order_book("BTCUSDT")
 #' market_order_book(c("BTCUSDT", "TRXUSDT"))
-market_order_book <- function(symbol) {
+market_order_book <- function(symbol, side = NULL, limit = 100) {
+  side <- check_order_side(side)
+
   if (length(symbol) > 1) {
     map_dfr(symbol, market_order_book)
   } else {
     symbol <- convert_symbol(symbol)
-    orders <- binance:::GET(
+    orders <- GET(
       "/api/v3/depth",
       query = list(
-        symbol = symbol
+        symbol = symbol,
+        limit = limit
       ),
       simplifyVector = TRUE
     )
@@ -249,10 +252,22 @@ market_order_book <- function(symbol) {
     orders$asks <- fix_matrix(orders$asks)
     orders$bids <- fix_matrix(orders$bids)
 
-    orders %>%
+    orders <- orders %>%
       as_tibble() %>%
       mutate(symbol = symbol) %>%
       clean_names() %>%
       select(symbol, everything())
+
+    if (!is.null(side)) {
+      orders <- orders %>% select(-last_update_id)
+
+      if (side == "BUY") {
+        orders %>% select(-asks) %>% unnest(cols = bids)
+      } else {
+        orders %>% select(-bids) %>% unnest(cols = asks)
+      }
+    } else {
+      orders
+    }
   }
 }

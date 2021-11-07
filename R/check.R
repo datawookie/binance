@@ -10,9 +10,15 @@ check_spot_order_type <- function(type) {
   }
 }
 
-check_spot_order_side <- function(side) {
-  if (!(side %in% SPOT_ORDER_SIDES)) {
-    stop("Invalid spot order side. Options are ", paste(SPOT_ORDER_SIDES, collapse = ", "), ".", sep = "")
+check_order_side <- function(side) {
+  if (is.null(side) || is.na(side)) {
+    NULL
+  } else {
+    side <- toupper(side)
+    if (!(side %in% SPOT_ORDER_SIDES)) {
+      stop("Invalid order side. Options are ", paste(SPOT_ORDER_SIDES, collapse = ", "), ".", sep = "")
+    }
+    side
   }
 }
 

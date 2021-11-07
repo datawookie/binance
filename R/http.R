@@ -102,7 +102,6 @@ GET <- function(
   }
 }
 
-
 #' POST
 #'
 #' @noRd
@@ -143,6 +142,63 @@ POST <- function(
   query <- query[!sapply(query, is.null)]
 
   response <- httr::POST(
+    url,
+    query = query,
+    headers,
+    USER_AGENT,
+    timeout(TIMEOUT_SECONDS)
+  )
+
+  if (check_response(response)) {
+    fromJSON(
+      content(response, as = "text"),
+      simplifyVector = simplifyVector
+    )
+  } else {
+    NULL
+  }
+}
+
+#' DELETE
+#'
+#' @noRd
+DELETE <- function(
+  path,
+  query = list(),
+  simplifyVector = FALSE,
+  security_type = "NONE"
+) {
+  url <- modify_url(cache$BASE_URL, path = path)
+  log_debug("DELETE {url}.")
+
+  signed <- security_type %in% c("USER_DATA", "TRADE")
+
+  headers <- list()
+  #
+  if (security_type %in% c("USER_DATA")) {
+    binance_api_key <- cache_get(API_KEY)
+    if (is.null(binance_api_key)) {
+      stop("Call authenticate() first to set API key.", call. = FALSE)
+    }
+    headers["X-MBX-APIKEY"] = binance_api_key
+  }
+  #
+  if (length(headers)) {
+    headers <- do.call(add_headers, headers)
+  } else {
+    headers <- NULL
+  }
+
+  if (signed) {
+    query["timestamp"] <- time_to_timestamp()
+    query["signature"] <- signature(query)
+  }
+
+  # Drop NULL components in query.
+  #
+  query <- query[!sapply(query, is.null)]
+
+  response <- httr::DELETE(
     url,
     query = query,
     headers,
