@@ -4,7 +4,7 @@
 \alias{p2p_search}
 \title{Search P2P}
 \usage{
-p2p_search(coin, fiat, side, pay_types = c(), page = 1, rows = 10)
+p2p_search(coin, fiat, side, pay_types = c(), page = NA, rows = 10)
 }
 \arguments{
 \item{coin}{Coin.}
@@ -17,7 +17,7 @@ p2p_search(coin, fiat, side, pay_types = c(), page = 1, rows = 10)
 \code{"WECHAT"} or \code{"ALIPAY"}. The default, \code{c()}, allows all
 payment options.}
 
-\item{page}{Page number.}
+\item{page}{Page number. If \code{NA} then get all pages.}
 
 \item{rows}{Number of records per page.}
 }

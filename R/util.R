@@ -103,3 +103,18 @@ flip_side <- function(side) {
     stop("Invalid side: '", side, "'.")
   }
 }
+
+list_null_to_na <- function(.data, recursive = TRUE) {
+  .data <- .data %>% modify_if(is.null, function(x) NA)
+  if (recursive) {
+    .data %>% modify_if(is.list, ~ list_null_to_na(.))
+  } else {
+    .data
+  }
+}
+
+make_clean_names_recursive <- function(.data) {
+  names(.data) <- make_clean_names(names(.data))
+
+  .data %>% modify_if(is.list, ~ make_clean_names_recursive(.))
+}

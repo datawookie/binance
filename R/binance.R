@@ -5,7 +5,7 @@
 #' @importFrom janitor make_clean_names clean_names
 #' @importFrom digest hmac
 #' @importFrom jsonlite fromJSON
-#' @importFrom purrr when possibly map map_dfr
+#' @importFrom purrr when possibly map map_dfr modify_if
 #' @importFrom stats setNames time
 #' @importFrom lubridate with_tz
 #' @importFrom tidyr unnest unnest_wider
@@ -50,7 +50,7 @@ NULL
 #'
 #' @name pagination
 #'
-#' @param page Page number.
+#' @param page Page number. If \code{NA} then get all pages.
 #' @param rows Number of records per page.
 NULL
 

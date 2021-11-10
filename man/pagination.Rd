@@ -4,7 +4,7 @@
 \alias{pagination}
 \title{Parameters for pagination}
 \arguments{
-\item{page}{Page number.}
+\item{page}{Page number. If \code{NA} then get all pages.}
 
 \item{rows}{Number of records per page.}
 }
