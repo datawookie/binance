@@ -214,6 +214,7 @@ market_price_ticker <- function(symbol = NULL) {
 #' Exposes the \code{GET /api/v3/depth} endpoint.
 #'
 #' @inheritParams trade-parameters
+#' @inheritParams limit-100-5000
 #'
 #' @return A data frame.
 #' @export

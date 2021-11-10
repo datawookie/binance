@@ -9,8 +9,10 @@ market_order_book(symbol, side = NULL, limit = 100)
 \arguments{
 \item{symbol}{Symbol.}
 
-\item{side}{Side of the trade. Either \code{"BUY"} (for bids) or \code{"SELL"}
-(for asks).}
+\item{side}{Side of the trade: \code{"BUY"} or \code{"SELL"}.}
+
+\item{limit}{Maximum number of records in result. Default is 100 and maximum
+is 5000.}
 }
 \value{
 A data frame.

@@ -67,6 +67,14 @@ NULL
 
 #' Limit with default 500 and maximum 1000.
 #'
+#' @name limit-100-5000
+#'
+#' @param limit Maximum number of records in result. Default is 100 and maximum
+#'   is 5000.
+NULL
+
+#' Limit with default 500 and maximum 1000.
+#'
 #' @name limit-500-1000
 #'
 #' @param limit Maximum number of records in result. Default is 500 and maximum
@@ -91,20 +99,24 @@ NULL
 
 globalVariables(
   c(
-    "open_time",
-    "close_time",
-    "cummulative_quote_qty",
-    "ignore",
-    "free",
-    "locked",
-    "order_list_id",
-    "coin",
     "address_tag",
+    "asks",
     "balances",
     "begins_with",
+    "bids",
     "client_order_id",
+    "close_time",
+    "coin",
+    "cummulative_quote_qty",
+    "free",
+    "ignore",
     "is_buyer",
+    "last_update_id",
+    "locked",
+    "open_time",
     "operate_time",
+    "order_list_id",
+    "orig_client_order_id",
     "tag",
     "trades",
     "update_time"

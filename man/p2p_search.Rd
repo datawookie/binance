@@ -29,14 +29,7 @@ Search P2P
 }
 \examples{
 # Grab the first page.
-p2p_search("USDT", "CNY", side = "BUY")
-# Grab the second page.
-p2p_search("USDT", "CNY", side = "BUY", page = 2)
-
-# Concatenate multiple pages.
-library(purrr)
-map_dfr(
-  1:3,
-  function(page) p2p_search("USDT", "CNY", side = "BUY", page = page)
-)
+p2p_search("ETH", "USD", side = "BUY", page = 1)
+# Grab all pages.
+p2p_search("ETH", "USD", side = "BUY")
 }

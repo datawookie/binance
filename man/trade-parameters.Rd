@@ -8,9 +8,6 @@
 
 \item{symbol}{Symbol.}
 
-\item{side}{Side of the trade. Either \code{"BUY"} (for bids) or \code{"SELL"}
-(for asks).}
-
 \item{start_time}{Start time. Something that can be coerced to \code{POSIXct}.}
 
 \item{end_time}{End time. Something that can be coerced to \code{POSIXct}.}
