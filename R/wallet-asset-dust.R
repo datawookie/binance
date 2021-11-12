@@ -31,7 +31,7 @@ wallet_dust_transfer <- function(coin) {
 
   as_tibble(dust) %>%
     clean_names() %>%
-    mutate_at(vars(begins_with("total")), as.numeric)
+    mutate_at(vars(starts_with("total")), as.numeric)
 }
 
 #' Log of dust

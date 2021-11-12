@@ -4,6 +4,12 @@ check_order_type <- function(type) {
   }
 }
 
+check_transfer_type <- function(type) {
+  if (!(type %in% TRANSFER_TYPES)) {
+    stop("Invalid transfer type. Options are ", paste(TRANSFER_TYPES, collapse = ", "), ".", sep = "")
+  }
+}
+
 check_spot_order_type <- function(type) {
   if (!(type %in% SPOT_ORDER_TYPES)) {
     stop("Invalid spot order type. Options are ", paste(SPOT_ORDER_TYPES, collapse = ", "), ".", sep = "")
