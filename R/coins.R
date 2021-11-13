@@ -76,6 +76,7 @@ COINS <- c(
   'BNBDOWN',
   'BNBUP',
   'BNT',
+  'BNX',
   'BOND',
   'BOT',
   'BQX',
@@ -104,6 +105,7 @@ COINS <- c(
   'CHESS',
   'CHR',
   'CHZ',
+  'CITY',
   'CKB',
   'CLOAK',
   'CLV',
@@ -122,6 +124,7 @@ COINS <- c(
   'CVC',
   'CVP',
   'DAI',
+  'DAR',
   'DASH',
   'DATA',
   'DCR',
@@ -149,6 +152,7 @@ COINS <- c(
   'ELF',
   'ENG',
   'ENJ',
+  'ENS',
   'EOS',
   'EOSBEAR',
   'EOSBULL',
@@ -264,6 +268,7 @@ COINS <- c(
   'MKR',
   'MLN',
   'MOD',
+  'MOVR',
   'MTH',
   'MTL',
   'NANO',
@@ -330,6 +335,7 @@ COINS <- c(
   'RENBTC',
   'REP',
   'REQ',
+  'RGT',
   'RIF',
   'RLC',
   'ROSE',
@@ -461,3 +467,5 @@ COINS <- c(
   'ZIL',
   'ZRX'
 )
+
+save(COINS, file = here::here("data", "coins.rda"))

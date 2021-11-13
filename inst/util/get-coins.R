@@ -21,3 +21,5 @@ paste(deparse(coins), collapse = "") %>%
   str_replace_all("'\\)", "'\n)") %>%
   str_replace_all("\\('", "(\n  '") %>%
   cat("COINS <-", ., file = COINS_SCRIPT, append = TRUE)
+
+cat('\n\nsave(COINS, file = here::here("data", "coins.rda"))', file = COINS_SCRIPT, append = TRUE)
