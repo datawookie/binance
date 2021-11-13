@@ -107,5 +107,6 @@ wallet_withdrawal_history <- function(
   ) %>%
     bind_rows() %>%
     clean_names() %>%
-    fix_types()
+    fix_types() %>%
+    select(-info)
 }

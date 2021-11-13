@@ -71,7 +71,7 @@ The Binance API is extensive. Below is the current coverage of the
 -   [ ] `GET /sapi/v1/asset/assetDetail (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/asset/tradeFee (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/asset/transfer (HMAC SHA256)`
--   [ ] `GET /sapi/v1/asset/transfer (HMAC SHA256)`
+-   [x] `GET /sapi/v1/asset/transfer (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/asset/get-funding-asset (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/account/apiRestrictions (HMAC SHA256)`
 -   [ ] `POST /sapi/v1/sub-account/virtualSubAccount (HMAC SHA256)`
@@ -246,4 +246,4 @@ The Binance API is extensive. Below is the current coverage of the
 -   [ ] `GET /sapi/v1/bswap/removeLiquidityPreview (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/fiat/orders (HMAC SHA256)`
 -   [ ] `GET /sapi/v1/fiat/payments (HMAC SHA256)`
--   [ ] `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory (HMAC SHA256)`
+-   [x] `GET /sapi/v1/c2c/orderMatch/listUserOrderHistory (HMAC SHA256)`

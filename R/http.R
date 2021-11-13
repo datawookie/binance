@@ -9,6 +9,7 @@ check_response <- function(response) {
     warning("API returned an empty result.")
     FALSE
   } else if (http_type(response) != "application/json") {
+    log_debug(content(response, as = "text"))
     stop("API did not return JSON.", call. = FALSE)
   } else if (status_code(response) != 200) {
     stop(

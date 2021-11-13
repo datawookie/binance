@@ -143,3 +143,29 @@ p2p_advertiser_detail <- function(advertiser_id) {
       sell_list = list(prepare_adverts(advertiser$sellList))
     )
 }
+
+#' Get P2P order history
+#'
+#' @return A tibble.
+#' @export
+p2p_order_history <- function(side) {
+  side <- check_order_side(side)
+
+  orders <- binance:::GET(
+    "/sapi/v1/c2c/orderMatch/listUserOrderHistory",
+    query = list(
+      tradeType = side
+    ),
+    simplifyVector = FALSE,
+    security_type = "USER_DATA"
+  )
+
+  if (orders$total > 0) {
+    orders$data %>%
+      bind_rows() %>%
+      clean_names() %>%
+      fix_types()
+  } else {
+    NULL
+  }
+}
