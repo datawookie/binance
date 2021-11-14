@@ -79,4 +79,8 @@ FIAT <- c(
   "ZAR"
 )
 
-save(FIAT, file = here::here("data", "fiat.rda"))
+FIAT_RDA = here::here("data", "fiat.rda")
+
+if (!file.exists(FIAT_RDA)) {
+  save(FIAT, file = FIAT_RDA)
+}

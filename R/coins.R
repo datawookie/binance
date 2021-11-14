@@ -467,5 +467,3 @@ COINS <- c(
   'ZIL',
   'ZRX'
 )
-
-save(COINS, file = here::here("data", "coins.rda"))
