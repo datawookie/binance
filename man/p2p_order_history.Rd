@@ -6,6 +6,9 @@
 \usage{
 p2p_order_history(side)
 }
+\arguments{
+\item{side}{Side of the trade: \code{"BUY"} or \code{"SELL"}.}
+}
 \value{
 A tibble.
 }

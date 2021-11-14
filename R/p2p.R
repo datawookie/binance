@@ -36,7 +36,7 @@ prepare_adverts <- function(adverts) {
 #' # Grab the first page.
 #' p2p_search("ETH", "USD", side = "BUY", page = 1)
 #' # Grab all pages.
-#' p2p_search("ETH", "USD", side = "BUY")
+#' p2p_search("BUSD", "CAD", side = "BUY")
 p2p_search <- function(
   coin,
   fiat,
@@ -53,7 +53,7 @@ p2p_search <- function(
 
     while (TRUE) {
       page <- page + 1
-      log_debug("Retrieve page {page}.")
+      log_debug("Retrieve {coin}/{fiat} page {page}.")
       args$page <- page
       batch <- do.call(p2p_search, args)
 
@@ -146,12 +146,14 @@ p2p_advertiser_detail <- function(advertiser_id) {
 
 #' Get P2P order history
 #'
+#' @inheritParams trade-parameters
+#'
 #' @return A tibble.
 #' @export
 p2p_order_history <- function(side) {
   side <- check_order_side(side)
 
-  orders <- binance:::GET(
+  orders <- GET(
     "/sapi/v1/c2c/orderMatch/listUserOrderHistory",
     query = list(
       tradeType = side

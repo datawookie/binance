@@ -20,6 +20,7 @@ Imports:
     curl,
     digest,
     dplyr,
+    here,
     httr,
     janitor,
     jsonlite,

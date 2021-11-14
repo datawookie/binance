@@ -97,10 +97,17 @@ NULL
 #'   and maximum is 30.
 NULL
 
+#' List of supported cryptocurrency coins
+"COINS"
+
+#' List of supported fiat currencies
+"FIAT"
+
 globalVariables(
   c(
     "address_tag",
     "asks",
+    "asset",
     "balances",
     "begins_with",
     "bids",
@@ -110,6 +117,7 @@ globalVariables(
     "cummulative_quote_qty",
     "free",
     "ignore",
+    "info",
     "is_buyer",
     "last_update_id",
     "locked",
@@ -117,7 +125,9 @@ globalVariables(
     "operate_time",
     "order_list_id",
     "orig_client_order_id",
+    "separate",
     "tag",
+    "timestamp",
     "trades",
     "update_time"
   )

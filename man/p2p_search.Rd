@@ -31,5 +31,5 @@ Search P2P
 # Grab the first page.
 p2p_search("ETH", "USD", side = "BUY", page = 1)
 # Grab all pages.
-p2p_search("ETH", "USD", side = "BUY")
+p2p_search("BUSD", "CAD", side = "BUY")
 }

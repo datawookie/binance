@@ -10,11 +10,13 @@ wallet_get_funding_asset(coin = NULL)
 \item{coin}{Coin.}
 }
 \value{
-
+A tibble.
 }
 \description{
 Get Funding Wallet
 }
 \examples{
+\dontrun{
 wallet_get_funding_asset("USDT")
+}
 }

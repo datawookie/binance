@@ -2,11 +2,13 @@
 #'
 #' @inheritParams trade-parameters
 #'
-#' @return
+#' @return A tibble.
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' wallet_get_funding_asset("USDT")
+#' }
 wallet_get_funding_asset <- function(coin = NULL) {
   query <- if (is.null(coin)) list() else list(asset = validate_coin(coin))
 

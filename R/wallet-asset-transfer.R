@@ -30,7 +30,7 @@ wallet_asset_transfer <- function(
   } else {
     check_transfer_type(type)
 
-    transfers <- binance:::GET(
+    transfers <- GET(
       "/sapi/v1/asset/transfer",
       simplifyVector = FALSE,
       security_type = "USER_DATA",
