@@ -23,4 +23,4 @@ paste(deparse(COINS), collapse = "") %>%
   str_replace_all("\\('", "(\n  '") %>%
   cat("COINS <-", ., file = COINS_SCRIPT, append = TRUE)
 
-save(COINS, file = COINS_RDA)
+save(COINS, file = COINS_RDA, version = 2)
