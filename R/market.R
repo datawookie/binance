@@ -228,6 +228,7 @@ market_order_book <- function(symbol, side = NULL, limit = 100) {
   if (length(symbol) > 1) {
     map_dfr(symbol, market_order_book)
   } else {
+    log_debug("Retrieve order book for {symbol}.")
     symbol <- convert_symbol(symbol)
     orders <- GET(
       "/api/v3/depth",
