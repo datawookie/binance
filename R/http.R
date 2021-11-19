@@ -42,6 +42,8 @@ base_url <- function(url = NULL) {
   }
 }
 
+get <- purrr::insistently(httr::GET)
+
 #' GET
 #'
 #' The security type can be one of the following:
@@ -92,7 +94,7 @@ GET <- function(
   #
   query <- query[!sapply(query, is.null)]
 
-  response <- httr::GET(
+  response <- get(
     url,
     query = query,
     headers,
