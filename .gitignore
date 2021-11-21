@@ -6,3 +6,6 @@ test.R
 README.html
 *_keystore*
 binance-wallet.txt
+*.csv
+*.xlsx
+*.json
