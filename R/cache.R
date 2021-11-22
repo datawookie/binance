@@ -1,6 +1,12 @@
 cache <- new.env()
 
 cache_get <- function(x) {
+  if (log_threshold() >= DEBUG) {
+    log_debug("Cache contents:")
+    for (key in ls(cache)) {
+      log_debug("- {key} -> {get(key, envir = cache)} {ifelse(x == key, '*', '')}")
+    }
+  }
   possibly(get, NULL)(x, envir = cache)
 }
 
