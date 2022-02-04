@@ -46,6 +46,14 @@ authenticate(
 )
 ```
 
+## Changing Service
+
+By default the package uses [Binance Global](https://www.binance.com). If you want to use a [Binance US](https://www.binance.us/) account then select the corresponding API as follows:
+
+```{r eval = FALSE}
+base_url("https://api.binance.us")
+```
+
 ## Endpoints
 
 The Binance API is extensive. Below is the current coverage of the `{binance}` package.
