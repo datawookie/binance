@@ -58,10 +58,13 @@
     <loc>/reference/market_price_ticker.html</loc>
   </url>
   <url>
-    <loc>/reference/market_recent_trades.html</loc>
+    <loc>/reference/market_server_time.html</loc>
   </url>
   <url>
-    <loc>/reference/market_server_time.html</loc>
+    <loc>/reference/market_trades_historical.html</loc>
+  </url>
+  <url>
+    <loc>/reference/market_trades_recent.html</loc>
   </url>
   <url>
     <loc>/reference/p2p_advertiser_detail.html</loc>
