@@ -166,8 +166,8 @@ market_average_price <- function(symbol) {
 #' @export
 #'
 #' @examples
-#' market_recent_trades("BTCUSDT")
-market_recent_trades <- function(symbol) {
+#' market_trades_recent("BTCUSDT")
+market_trades_recent <- function(symbol) {
   symbol <- convert_symbol(symbol)
   GET(
     "/api/v3/trades",
@@ -182,7 +182,51 @@ market_recent_trades <- function(symbol) {
       time = parse_time(time)
     ) %>%
     select(symbol, everything()) %>%
-    clean_names()
+    clean_names() %>%
+    mutate(
+      price = as.numeric(price),
+      qty = as.numeric(qty),
+      quote_qty = as.numeric(quote_qty)
+    )
+}
+
+#' Get recent trades
+#'
+#' Exposes the \code{GET /api/v3/trades} endpoint.
+#'
+#' @inheritParams trade-parameters
+#'
+#' @return A data frame.
+#' @export
+#'
+#' @examples
+#' market_trades_historical("BTCUSDT")
+market_trades_historical <- function(symbol, from = 0, limit = 1000) {
+  symbol <- convert_symbol(symbol)
+  GET(
+    "/api/v3/historicalTrades",
+    query = list(
+      symbol = symbol,
+      limit = limit,
+      fromId = format(from, scientific = FALSE)
+    ),
+    simplifyVector = TRUE,
+    security_type = "USER_DATA",
+    signed = FALSE
+  ) %>%
+    as_tibble() %>%
+    mutate(
+      symbol = symbol,
+      time = parse_time(time)
+    ) %>%
+    select(symbol, everything()) %>%
+    clean_names() %>%
+    mutate(
+      price = as.numeric(price),
+      qty = as.numeric(qty),
+      quote_qty = as.numeric(quote_qty),
+      side = ifelse(is_buyer_maker, "SELL", "BUY")
+    )
 }
 
 #' Latest price for a symbol

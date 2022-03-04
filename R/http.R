@@ -58,14 +58,15 @@ GET <- function(
   query = list(),
   simplifyVector = FALSE,
   security_type = "NONE",
-  base_url = NA
+  base_url = NA,
+  signed = NA
 ) {
   if (is.na(base_url)) base_url <- cache$BASE_URL
 
   url <- modify_url(base_url, path = path)
   log_debug("GET {url}.")
 
-  signed <- security_type %in% c("USER_DATA", "TRADE")
+  signed <- ifelse(is.na(signed), security_type %in% c("USER_DATA", "TRADE"), signed)
 
   headers <- HEADERS_DEFAULT
   #
