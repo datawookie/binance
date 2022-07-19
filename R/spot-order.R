@@ -1,6 +1,6 @@
 #' Create new order
 #'
-#' Exposes the \code{POST /api/v3/order/test} endpoint.
+#' Exposes the \code{POST /api/v3/order/} endpoint.
 #'
 #' @name spot-new-order
 #' @inheritParams trade-parameters
@@ -20,17 +20,36 @@
 #'
 #' @examples
 #' \dontrun{
-#' spot_new_order()
+#' # Create new order (returns a data frame).
+#' spot_new_order(
+#'   order_type = "LIMIT",
+#'   symbol = "LTCUSDT",
+#'   side = "SELL",
+#'   quantity = 1,
+#'   price = 67,
+#'   time_in_force = "GTC"
+#' )
+#'
+#' # Test new order creation (returns a Boolean).
+#' spot_new_order(
+#'   order_type = "LIMIT",
+#'   symbol = "LTCUSDT",
+#'   side = "SELL",
+#'   quantity = 1,
+#'   price = 67,
+#'   time_in_force = "GTC",
+#'   test = TRUE
+#' )
 #' }
 spot_new_order <- function(
-  order_type,
-  symbol,
-  side,
-  quantity,
-  price = NULL,
-  time_in_force = NULL,
-  test = FALSE,
-  fills = TRUE
+    order_type,
+    symbol,
+    side,
+    quantity,
+    price = NULL,
+    time_in_force = NULL,
+    test = FALSE,
+    fills = TRUE
 ) {
   check_spot_order_type(order_type)
   check_order_side(side)
@@ -45,7 +64,7 @@ spot_new_order <- function(
     endpoint <- paste0(endpoint, "/test")
   }
 
-  order <- POST(
+  order <- possibly(POST, NULL)(
     endpoint,
     query = list(
       symbol = symbol,
@@ -59,18 +78,25 @@ spot_new_order <- function(
     security_type = "USER_DATA"
   )
 
-  order$fills <- order$fills %>% bind_rows() %>% fix_types() %>% clean_names() %>% list()
+  if (test) {
+    # If test successful then the result would be an empty list. If test failed
+    # then result would be NULL.
+    #
+    class(order) == "list"
+  } else {
+    order$fills <- order$fills %>% bind_rows() %>% fix_types() %>% clean_names() %>% list()
 
-  order %>%
-    as_tibble() %>%
-    clean_names() %>%
-    select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
-    when(
-      !fills ~ select(., -fills),
-      ~ identity(.)
-    ) %>%
-    fix_types() %>%
-    fix_columns()
+    order %>%
+      as_tibble() %>%
+      clean_names() %>%
+      select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
+      when(
+        !fills ~ select(., -fills),
+        ~ identity(.)
+      ) %>%
+      fix_types() %>%
+      fix_columns()
+  }
 }
 
 #' @rdname spot-new-order

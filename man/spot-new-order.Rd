@@ -51,10 +51,28 @@ order cannot be filled.}
 A data frame.
 }
 \description{
-Exposes the \code{POST /api/v3/order/test} endpoint.
+Exposes the \code{POST /api/v3/order/} endpoint.
 }
 \examples{
 \dontrun{
-spot_new_order()
+spot_new_order(
+  order_type = "LIMIT",
+  symbol = "LTCUSDT",
+  side = "SELL",
+  quantity = 1,
+  price = 67,
+  time_in_force = "GTC"
+)
+
+# Test new order creation.
+spot_new_order(
+  order_type = "LIMIT",
+  symbol = "LTCUSDT",
+  side = "SELL",
+  quantity = 1,
+  price = 67,
+  time_in_force = "GTC",
+  test = TRUE
+)
 }
 }
