@@ -47,24 +47,26 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">market_exchange_info</span><span class="op">(</span><span class="op">)</span>
-
-<span class="fu">market_exchange_symbols</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">market_exchange_info</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">market_exchange_symbols</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="value">
     <h2>Value</h2>
-    <p>A <code>POSIXct</code> object.</p>
+    
+
+<p>A <code>POSIXct</code> object.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">market_exchange_info</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">market_exchange_info</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $timezone</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "UTC"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $server_time</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-03-04 16:33:33 UTC"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2022-07-19 15:03:32 UTC"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $rate_limits</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 4</span></span>
@@ -78,32 +80,35 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> list()</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $symbols</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    symbol  status  base  quote order_types iceberg_allowed oco_allowed</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> BNBBUSD TRADING BNB   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> BTCBUSD TRADING BTC   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ETHBUSD TRADING ETH   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> LTCBUSD TRADING LTC   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> TRXBUSD TRADING TRX   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> XRPBUSD TRADING XRP   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BNBUSDT TRADING BNB   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> BTCUSDT TRADING BTC   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ETHUSDT TRADING ETH   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> LTCUSDT TRADING LTC   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> TRXUSDT TRADING TRX   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> XRPUSDT TRADING XRP   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> BNBBTC  TRADING BNB   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> ETHBTC  TRADING ETH   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> LTCBTC  TRADING LTC   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> TRXBTC  TRADING TRX   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> XRPBTC  TRADING XRP   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> LTCBNB  TRADING LTC   BNB   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> TRXBNB  TRADING TRX   BNB   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> XRPBNB  TRADING XRP   BNB   <span style="color: #949494;">&lt;chr [5]&gt;</span>   TRUE            TRUE       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 6 more variables: quote_order_qty_market_allowed &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   allow_trailing_stop &lt;lgl&gt;, is_spot_trading_allowed &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   is_margin_trading_allowed &lt;lgl&gt;, filters &lt;list&gt;, permissions &lt;list&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    symbol  status  base  quote order_t…¹ icebe…² oco_a…³ quote…⁴ allow…⁵ cance…⁶</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> BNBBUSD TRADING BNB   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> BTCBUSD TRADING BTC   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> ETHBUSD TRADING ETH   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> LTCBUSD TRADING LTC   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> TRXBUSD TRADING TRX   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> XRPBUSD TRADING XRP   BUSD  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BNBUSDT TRADING BNB   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> BTCUSDT TRADING BTC   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> ETHUSDT TRADING ETH   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> LTCUSDT TRADING LTC   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> TRXUSDT TRADING TRX   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> XRPUSDT TRADING XRP   USDT  <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> BNBBTC  TRADING BNB   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> ETHBTC  TRADING ETH   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> LTCBTC  TRADING LTC   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> TRXBTC  TRADING TRX   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> XRPBTC  TRADING XRP   BTC   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> LTCBNB  TRADING LTC   BNB   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> TRXBNB  TRADING TRX   BNB   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> XRPBNB  TRADING XRP   BNB   <span style="color: #949494;">&lt;chr [5]&gt;</span> TRUE    TRUE    TRUE    TRUE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 4 more variables: is_spot_trading_allowed &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   is_margin_trading_allowed &lt;lgl&gt;, filters &lt;list&gt;, permissions &lt;list&gt;, and</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​order_types, ²​iceberg_allowed, ³​oco_allowed,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​quote_order_qty_market_allowed, ⁵​allow_trailing_stop,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁶​cancel_replace_allowed</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
@@ -119,7 +124,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

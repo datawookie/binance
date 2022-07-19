@@ -47,33 +47,37 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">p2p_advertiser_detail</span><span class="op">(</span><span class="va">advertiser_id</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">p2p_advertiser_detail</span><span class="op">(</span><span class="va">advertiser_id</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>advertiser_id</dt>
 <dd><p>Advertiser ID.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble.</p>
+    
+
+<p>A tibble.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">p2p_advertiser_detail</span><span class="op">(</span><span class="st">"saee1afc6b3133e7987e81020003f9707"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 32</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   user_no      nick_name user_grade margin margin_unit decimal_scale order_count</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> saee1afc6b3… 鹏程万里…          2      0 <span style="color: #949494;">""</span>          <span style="color: #BB0000;">NA</span>                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 25 more variables: month_order_count &lt;int&gt;, month_finish_rate &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   adv_confirm_time &lt;int&gt;, email_verified &lt;lgl&gt;, bind_mobile &lt;lgl&gt;,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">p2p_advertiser_detail</span><span class="op">(</span><span class="st">"saee1afc6b3133e7987e81020003f9707"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 37</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   user_no nick_…¹ user_…² margin margi…³ decim…⁴ order…⁵ month…⁶ month…⁷ adv_c…⁸</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> saee1a… 鹏程万…       2      0 <span style="color: #949494;">""</span>      <span style="color: #BB0000;">NA</span>            0       0       0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 27 more variables: email_verified &lt;lgl&gt;, bind_mobile &lt;lgl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   kyc_verified &lt;lgl&gt;, registration_time &lt;lgl&gt;, pay_method_count &lt;lgl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   mobile &lt;lgl&gt;, kyc_type &lt;int&gt;, kyc_status &lt;chr&gt;, user_stats_ret &lt;list&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   user_kyc_ret &lt;list&gt;, business_status &lt;lgl&gt;, over_complained &lt;lgl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   online_status &lt;lgl&gt;, register_days &lt;lgl&gt;, first_order_days &lt;lgl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   chanel_involved &lt;lgl&gt;, user_identity &lt;lgl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   chanel_involved &lt;lgl&gt;, user_identity &lt;lgl&gt;, user_grade_instance_ret &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pro_merchant &lt;lgl&gt;, trade_order_count &lt;lgl&gt;, is_blocked &lt;lgl&gt;, …</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -88,7 +92,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

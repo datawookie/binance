@@ -47,36 +47,41 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">market_trades_recent</span><span class="op">(</span><span class="va">symbol</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">market_trades_recent</span><span class="op">(</span><span class="va">symbol</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>symbol</dt>
 <dd><p>Symbol.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame.</p>
+    
+
+<p>A data frame.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">market_trades_recent</span><span class="op">(</span><span class="st">"BTCUSDT"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">market_trades_recent</span><span class="op">(</span><span class="st">"BTCUSDT"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 500 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    symbol      id  price     qty quote_qty time                is_buyer_maker</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> BTCUSDT <span style="text-decoration: underline;">384</span>153 <span style="text-decoration: underline;">40</span>658. 0.034<span style="text-decoration: underline;">4</span>      <span style="text-decoration: underline;">1</span>399. 2022-03-04 <span style="color: #949494;">16:29:44</span> TRUE          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> BTCUSDT <span style="text-decoration: underline;">384</span>154 <span style="text-decoration: underline;">40</span>658. 0.036<span style="text-decoration: underline;">2</span>      <span style="text-decoration: underline;">1</span>471. 2022-03-04 <span style="color: #949494;">16:29:44</span> TRUE          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> BTCUSDT <span style="text-decoration: underline;">384</span>155 <span style="text-decoration: underline;">40</span>660. 0.051<span style="text-decoration: underline;">2</span>      <span style="text-decoration: underline;">2</span>080. 2022-03-04 <span style="color: #949494;">16:29:49</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> BTCUSDT <span style="text-decoration: underline;">384</span>156 <span style="text-decoration: underline;">40</span>661. 0.010<span style="text-decoration: underline;">8</span>       440. 2022-03-04 <span style="color: #949494;">16:29:49</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> BTCUSDT <span style="text-decoration: underline;">384</span>157 <span style="text-decoration: underline;">40</span>663. 0.046<span style="text-decoration: underline;">5</span>      <span style="text-decoration: underline;">1</span>890. 2022-03-04 <span style="color: #949494;">16:29:50</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> BTCUSDT <span style="text-decoration: underline;">384</span>158 <span style="text-decoration: underline;">40</span>663. 0.003<span style="text-decoration: underline;">69</span>      150. 2022-03-04 <span style="color: #949494;">16:29:50</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BTCUSDT <span style="text-decoration: underline;">384</span>159 <span style="text-decoration: underline;">40</span>664. 0.037<span style="text-decoration: underline;">6</span>      <span style="text-decoration: underline;">1</span>530. 2022-03-04 <span style="color: #949494;">16:29:51</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> BTCUSDT <span style="text-decoration: underline;">384</span>160 <span style="text-decoration: underline;">40</span>664. 0.018<span style="text-decoration: underline;">4</span>       750. 2022-03-04 <span style="color: #949494;">16:29:51</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> BTCUSDT <span style="text-decoration: underline;">384</span>161 <span style="text-decoration: underline;">40</span>664. 0.043<span style="text-decoration: underline;">0</span>      <span style="text-decoration: underline;">1</span>750. 2022-03-04 <span style="color: #949494;">16:29:51</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> BTCUSDT <span style="text-decoration: underline;">384</span>162 <span style="text-decoration: underline;">40</span>665. 0.059<span style="text-decoration: underline;">7</span>      <span style="text-decoration: underline;">2</span>430. 2022-03-04 <span style="color: #949494;">16:29:52</span> FALSE         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 490 more rows, and 1 more variable: is_best_match &lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    symbol       id  price     qty quote_qty time                is_buy…¹ is_be…²</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>974 <span style="text-decoration: underline;">22</span>646. 0.085<span style="text-decoration: underline;">2</span>     <span style="text-decoration: underline;">1</span>930.  2022-07-19 <span style="color: #949494;">15:00:48</span> FALSE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>975 <span style="text-decoration: underline;">22</span>646. 0.094<span style="text-decoration: underline;">5</span>     <span style="text-decoration: underline;">2</span>140.  2022-07-19 <span style="color: #949494;">15:00:48</span> FALSE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>976 <span style="text-decoration: underline;">22</span>646. 0.046<span style="text-decoration: underline;">8</span>     <span style="text-decoration: underline;">1</span>059.  2022-07-19 <span style="color: #949494;">15:00:49</span> FALSE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>977 <span style="text-decoration: underline;">22</span>650  0.002<span style="text-decoration: underline;">22</span>      50.3 2022-07-19 <span style="color: #949494;">15:00:49</span> FALSE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>978 <span style="text-decoration: underline;">22</span>652. 0.013<span style="text-decoration: underline;">2</span>      300.  2022-07-19 <span style="color: #949494;">15:00:49</span> TRUE     TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>979 <span style="text-decoration: underline;">22</span>652. 0.067<span style="text-decoration: underline;">1</span>     <span style="text-decoration: underline;">1</span>520.  2022-07-19 <span style="color: #949494;">15:00:50</span> FALSE    TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>980 <span style="text-decoration: underline;">22</span>652. 0.011<span style="text-decoration: underline;">4</span>      257.  2022-07-19 <span style="color: #949494;">15:00:51</span> TRUE     TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>981 <span style="text-decoration: underline;">22</span>652. 0.001        22.7 2022-07-19 <span style="color: #949494;">15:00:51</span> TRUE     TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>982 <span style="text-decoration: underline;">22</span>652. 0.003<span style="text-decoration: underline;">90</span>      88.3 2022-07-19 <span style="color: #949494;">15:00:51</span> TRUE     TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> BTCUSDT 2<span style="text-decoration: underline;">045</span>983 <span style="text-decoration: underline;">22</span>653. 0.003<span style="text-decoration: underline;">86</span>      87.3 2022-07-19 <span style="color: #949494;">15:00:51</span> TRUE     TRUE   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 490 more rows, and abbreviated variable names ¹​is_buyer_maker,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ²​is_best_match</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -91,7 +96,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

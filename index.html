@@ -62,38 +62,37 @@
 <div class="page-header"><h1 id="binance-">binance <img src="reference/figures/binance-hex.png" align="right" alt="" width="120"><a class="anchor" aria-label="anchor" href="#binance-"></a>
 </h1></div>
 <!-- badges: start -->
-
 <p><code>{binance}</code> is a wrapper for the <a href="https://binance-docs.github.io/apidocs/spot/en/" class="external-link">Binance API</a>. The documentation for <code>{binance}</code> can be found <a href="https://datawookie.github.io/binance/" class="external-link">here</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>Install the development version from GitHub.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"datawookie/binance"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"datawookie/binance"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="load-the-library">Load the Library<a class="anchor" aria-label="anchor" href="#load-the-library"></a>
 </h2>
 <p>Load the library.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">binance</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">binance</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="authenticate">Authenticate<a class="anchor" aria-label="anchor" href="#authenticate"></a>
 </h2>
 <p>Many of the functions are available without authentication. However, if you want to access information relating to your wallet or trades then you’ll need to create an API key and secret.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/authenticate.html">authenticate</a></span><span class="op">(</span>
-  key <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"BINANCE_API_KEY"</span><span class="op">)</span>,
-  secret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"BINANCE_API_SECRET"</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/authenticate.html">authenticate</a></span><span class="op">(</span></span>
+<span>  key <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"BINANCE_API_KEY"</span><span class="op">)</span>,</span>
+<span>  secret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"BINANCE_API_SECRET"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="changing-service">Changing Service<a class="anchor" aria-label="anchor" href="#changing-service"></a>
 </h2>
 <p>By default the package uses <a href="https://www.binance.com" class="external-link">Binance Global</a>. If you want to use a <a href="https://www.binance.us/" class="external-link">Binance US</a> account then select the corresponding API as follows:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/base_url.html">base_url</a></span><span class="op">(</span><span class="st">"https://api.binance.us"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/base_url.html">base_url</a></span><span class="op">(</span><span class="st">"https://api.binance.us"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="endpoints">Endpoints<a class="anchor" aria-label="anchor" href="#endpoints"></a>
@@ -712,7 +711,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

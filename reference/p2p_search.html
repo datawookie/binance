@@ -47,65 +47,90 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">p2p_search</span><span class="op">(</span><span class="va">coin</span>, <span class="va">fiat</span>, <span class="va">side</span>, pay_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>, page <span class="op">=</span> <span class="cn">NA</span>, rows <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">p2p_search</span><span class="op">(</span><span class="va">coin</span>, <span class="va">fiat</span>, <span class="va">side</span>, pay_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span>, page <span class="op">=</span> <span class="cn">NA</span>, rows <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>coin</dt>
 <dd><p>Coin.</p></dd>
+
+
 <dt>fiat</dt>
 <dd><p>Fiat currency.</p></dd>
+
+
 <dt>side</dt>
 <dd><p>Side of the trade: <code>"BUY"</code> or <code>"SELL"</code>.</p></dd>
+
+
 <dt>pay_types</dt>
 <dd><p>Options for payment. One or more of <code>"BANK"</code>,
 <code>"WECHAT"</code> or <code>"ALIPAY"</code>. The default, <code><a href="https://rdrr.io/r/base/c.html" class="external-link">c()</a></code>, allows all
 payment options.</p></dd>
+
+
 <dt>page</dt>
 <dd><p>Page number. If <code>NA</code> then get all pages.</p></dd>
+
+
 <dt>rows</dt>
 <dd><p>Number of records per page.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame.</p>
+    
+
+<p>A data frame.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Grab the first page.</span></span>
-<span class="r-in"><span class="fu">p2p_search</span><span class="op">(</span><span class="st">"ETH"</span>, <span class="st">"USD"</span>, side <span class="op">=</span> <span class="st">"BUY"</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Grab the first page.</span></span></span>
+<span class="r-in"><span><span class="fu">p2p_search</span><span class="op">(</span><span class="st">"ETH"</span>, <span class="st">"USD"</span>, side <span class="op">=</span> <span class="st">"BUY"</span>, page <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    advert_id  side  asset fiat  price available min_amount max_amount advertiser</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 113327434… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>663.   0.019<span style="text-decoration: underline;">4</span>          15       51.7 &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 113330958… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>722.   0.009<span style="text-decoration: underline;">97</span>         15       27.1 &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 113330510… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>730.   0.152           15      415.  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 112609669… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>738.   0.344           50      943.  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 112627973… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>741.   0.227           11      623.  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 112822947… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>742.   2.14           100     <span style="text-decoration: underline;">2</span>000   &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 113063985… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>775.   0.369           50     <span style="text-decoration: underline;">1</span>024.  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 113003506… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>788.   0.997           10     <span style="text-decoration: underline;">2</span>781.  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 113330642… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>800    0.017<span style="text-decoration: underline;">2</span>          15       48.1 &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 112158202… BUY   ETH   USD   <span style="text-decoration: underline;">2</span>805.   0.012<span style="text-decoration: underline;">8</span>           5       36.0 &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1 more variable: payment &lt;list&gt;</span></span>
-<span class="r-in"><span class="co"># Grab all pages.</span></span>
-<span class="r-in"><span class="fu">p2p_search</span><span class="op">(</span><span class="st">"BUSD"</span>, <span class="st">"CAD"</span>, side <span class="op">=</span> <span class="st">"BUY"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 31 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    advert_id  side  asset fiat  price available min_amount max_amount advertiser</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 113325749… BUY   BUSD  CAD    1.28     <span style="text-decoration: underline;">1</span>049.        100      <span style="text-decoration: underline;">1</span>343. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 113329288… BUY   BUSD  CAD    1.28     <span style="text-decoration: underline;">1</span>474.       <span style="text-decoration: underline;">1</span>000      <span style="text-decoration: underline;">1</span>886. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 113330901… BUY   BUSD  CAD    1.28      399.        410       511. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 113305737… BUY   BUSD  CAD    1.29     <span style="text-decoration: underline;">6</span>008.        300      <span style="text-decoration: underline;">1</span>300  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 113238900… BUY   BUSD  CAD    1.29      825.        200      <span style="text-decoration: underline;">1</span>065. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 113307610… BUY   BUSD  CAD    1.29      981.        500      <span style="text-decoration: underline;">1</span>265. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 113325313… BUY   BUSD  CAD    1.29     <span style="text-decoration: underline;">1</span>247.        200      <span style="text-decoration: underline;">1</span>608. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 113295777… BUY   BUSD  CAD    1.29     <span style="text-decoration: underline;">6</span>281.       <span style="text-decoration: underline;">1</span>000      <span style="text-decoration: underline;">4</span>500  &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 113302182… BUY   BUSD  CAD    1.29      510.        200       658. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 113303910… BUY   BUSD  CAD    1.29      619.        150       799. &lt;tibble&gt;  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 21 more rows, and 1 more variable: payment &lt;list&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    advert_id   side  asset fiat  price avail…¹ min_a…² max_a…³ advert…⁴ payment </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1129083933… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>579.   0.719      15   <span style="text-decoration: underline;">1</span>136. &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1138106945… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>582.   0.178      50    282. &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1137301378… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>586.   0.100      15    159. &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1126096695… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>588.   0.963      20   <span style="text-decoration: underline;">1</span>200  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1137052920… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>609.   1.44      100    800  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1129765356… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>621.   0.410      50    600  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1134948811… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>635.   0.821      50   <span style="text-decoration: underline;">1</span>342. &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1138268563… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>641.   0.141      10    231. &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1137959366… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>650    8.85       50   <span style="text-decoration: underline;">7</span>500  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1137138548… BUY   ETH   USD   <span style="text-decoration: underline;">1</span>656.   0.699      11   <span style="text-decoration: underline;">1</span>157. &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​available, ²​min_amount, ³​max_amount,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​advertiser</span></span>
+<span class="r-in"><span><span class="co"># Grab all pages.</span></span></span>
+<span class="r-in"><span><span class="fu">p2p_search</span><span class="op">(</span><span class="st">"BUSD"</span>, <span class="st">"CAD"</span>, side <span class="op">=</span> <span class="st">"BUY"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 10</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    advert_id   side  asset fiat  price avail…¹ min_a…² max_a…³ advert…⁴ payment </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 1138235853… BUY   BUSD  CAD    1.32   444.       50   586.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 1138013101… BUY   BUSD  CAD    1.32   432.      500   570.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 1137626446… BUY   BUSD  CAD    1.32  <span style="text-decoration: underline;">2</span>153.      500  <span style="text-decoration: underline;">2</span>842.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 1137229988… BUY   BUSD  CAD    1.33   769.     <span style="text-decoration: underline;">1</span>000  <span style="text-decoration: underline;">1</span>023.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 1137985168… BUY   BUSD  CAD    1.33   976.      500  <span style="text-decoration: underline;">1</span>297.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 1130666935… BUY   BUSD  CAD    1.33   982.      300  <span style="text-decoration: underline;">1</span>306.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 1136974779… BUY   BUSD  CAD    1.33  <span style="text-decoration: underline;">1</span>167.      500  <span style="text-decoration: underline;">1</span>552.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 1129084251… BUY   BUSD  CAD    1.33    81.1      50   108.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 1137893406… BUY   BUSD  CAD    1.33   799.      100  <span style="text-decoration: underline;">1</span>063.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 1138035020… BUY   BUSD  CAD    1.33   752.      100  <span style="text-decoration: underline;">1</span>000.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> 1138128033… BUY   BUSD  CAD    1.35  <span style="text-decoration: underline;">4</span>235.     <span style="text-decoration: underline;">2</span>000  <span style="text-decoration: underline;">3</span>000   &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> 1137127676… BUY   BUSD  CAD    1.36   110.       10   150.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> 1135407494… BUY   BUSD  CAD    1.36  <span style="text-decoration: underline;">1</span>870.      136  <span style="text-decoration: underline;">2</span>543.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> 1131390795… BUY   BUSD  CAD    1.36   753.      100  <span style="text-decoration: underline;">1</span>024.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> 1136547740… BUY   BUSD  CAD    1.38    45.7      50    63.1 &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> 1137660377… BUY   BUSD  CAD    1.39  <span style="text-decoration: underline;">1</span>886.       80  <span style="text-decoration: underline;">2</span>622.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> 1121867386… BUY   BUSD  CAD    1.42   101.       20   144.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> 1133554587… BUY   BUSD  CAD    1.5    222.       10   333.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> 1137733061… BUY   BUSD  CAD    1.5    658.       10   988.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> 1137186437… BUY   BUSD  CAD    1.52   856.       25  <span style="text-decoration: underline;">1</span>301.  &lt;tibble&gt; &lt;tibble&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with abbreviated variable names ¹​available, ²​min_amount, ³​max_amount,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​advertiser</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -120,7 +145,7 @@ payment options.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

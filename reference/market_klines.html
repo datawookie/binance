@@ -47,56 +47,70 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">market_klines</span><span class="op">(</span>
-  <span class="va">symbol</span>,
-  interval <span class="op">=</span> <span class="st">"1m"</span>,
-  start_time <span class="op">=</span> <span class="cn">NULL</span>,
-  end_time <span class="op">=</span> <span class="cn">NULL</span>,
-  limit <span class="op">=</span> <span class="fl">500</span>,
-  volume <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">market_klines</span><span class="op">(</span></span>
+<span>  <span class="va">symbol</span>,</span>
+<span>  interval <span class="op">=</span> <span class="st">"1m"</span>,</span>
+<span>  start_time <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  end_time <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  limit <span class="op">=</span> <span class="fl">500</span>,</span>
+<span>  volume <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>symbol</dt>
 <dd><p>Symbol.</p></dd>
+
+
 <dt>interval</dt>
 <dd><p>Time interval. One  of 1m, 3m, 5m, 15m, 30m, 1h, 2h, 4h, 6h,
 8h, 12h, 1d, 3d, 1w or 1M where m = minutes, h = hours, d = days,
 w = weeks and M = months.</p></dd>
+
+
 <dt>start_time</dt>
 <dd><p>Start time. Something that can be coerced to <code>POSIXct</code>.</p></dd>
+
+
 <dt>end_time</dt>
 <dd><p>End time. Something that can be coerced to <code>POSIXct</code>.</p></dd>
+
+
 <dt>limit</dt>
 <dd><p>Maximum number of records in result. Default is 500 and maximum
 is 1000.</p></dd>
+
+
 <dt>volume</dt>
 <dd><p>Whether to include volume data in output.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A data frame.</p>
+    
+
+<p>A data frame.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">market_klines</span><span class="op">(</span><span class="st">"BTCUSDT"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">market_klines</span><span class="op">(</span><span class="st">"BTCUSDT"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 500 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    symbol  open_time           close_time            open   high    low  close</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:14:00</span> 2022-03-04 <span style="color: #949494;">08:14:59</span> <span style="text-decoration: underline;">41</span>700  <span style="text-decoration: underline;">41</span>725. <span style="text-decoration: underline;">41</span>694. <span style="text-decoration: underline;">41</span>694.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:15:00</span> 2022-03-04 <span style="color: #949494;">08:15:59</span> <span style="text-decoration: underline;">41</span>692. <span style="text-decoration: underline;">41</span>692. <span style="text-decoration: underline;">41</span>611. <span style="text-decoration: underline;">41</span>611.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:16:00</span> 2022-03-04 <span style="color: #949494;">08:16:59</span> <span style="text-decoration: underline;">41</span>619. <span style="text-decoration: underline;">41</span>620. <span style="text-decoration: underline;">41</span>592. <span style="text-decoration: underline;">41</span>607.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:17:00</span> 2022-03-04 <span style="color: #949494;">08:17:59</span> <span style="text-decoration: underline;">41</span>607. <span style="text-decoration: underline;">41</span>619. <span style="text-decoration: underline;">41</span>588. <span style="text-decoration: underline;">41</span>604.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:18:00</span> 2022-03-04 <span style="color: #949494;">08:18:59</span> <span style="text-decoration: underline;">41</span>600. <span style="text-decoration: underline;">41</span>613. <span style="text-decoration: underline;">41</span>559. <span style="text-decoration: underline;">41</span>613.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:19:00</span> 2022-03-04 <span style="color: #949494;">08:19:59</span> <span style="text-decoration: underline;">41</span>609. <span style="text-decoration: underline;">41</span>609. <span style="text-decoration: underline;">41</span>572. <span style="text-decoration: underline;">41</span>601.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:20:00</span> 2022-03-04 <span style="color: #949494;">08:20:59</span> <span style="text-decoration: underline;">41</span>603. <span style="text-decoration: underline;">41</span>615. <span style="text-decoration: underline;">41</span>587. <span style="text-decoration: underline;">41</span>587.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:21:00</span> 2022-03-04 <span style="color: #949494;">08:21:59</span> <span style="text-decoration: underline;">41</span>587. <span style="text-decoration: underline;">41</span>616. <span style="text-decoration: underline;">41</span>576. <span style="text-decoration: underline;">41</span>588.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:22:00</span> 2022-03-04 <span style="color: #949494;">08:22:59</span> <span style="text-decoration: underline;">41</span>576. <span style="text-decoration: underline;">41</span>581. <span style="text-decoration: underline;">41</span>529. <span style="text-decoration: underline;">41</span>540.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> BTCUSDT 2022-03-04 <span style="color: #949494;">08:23:00</span> 2022-03-04 <span style="color: #949494;">08:23:59</span> <span style="text-decoration: underline;">41</span>537. <span style="text-decoration: underline;">41</span>537. <span style="text-decoration: underline;">41</span>516. <span style="text-decoration: underline;">41</span>527.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:44:00</span> 2022-07-19 <span style="color: #949494;">06:44:59</span> <span style="text-decoration: underline;">21</span>820. <span style="text-decoration: underline;">21</span>854. <span style="text-decoration: underline;">21</span>792. <span style="text-decoration: underline;">21</span>796.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:45:00</span> 2022-07-19 <span style="color: #949494;">06:45:59</span> <span style="text-decoration: underline;">21</span>796. <span style="text-decoration: underline;">21</span>860. <span style="text-decoration: underline;">21</span>784. <span style="text-decoration: underline;">21</span>852.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:46:00</span> 2022-07-19 <span style="color: #949494;">06:46:59</span> <span style="text-decoration: underline;">21</span>846. <span style="text-decoration: underline;">21</span>854. <span style="text-decoration: underline;">21</span>686. <span style="text-decoration: underline;">21</span>686.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:47:00</span> 2022-07-19 <span style="color: #949494;">06:47:59</span> <span style="text-decoration: underline;">21</span>680  <span style="text-decoration: underline;">21</span>785. <span style="text-decoration: underline;">21</span>094  <span style="text-decoration: underline;">21</span>687.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:48:00</span> 2022-07-19 <span style="color: #949494;">06:48:59</span> <span style="text-decoration: underline;">21</span>686. <span style="text-decoration: underline;">21</span>690. <span style="text-decoration: underline;">21</span>658. <span style="text-decoration: underline;">21</span>678.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:49:00</span> 2022-07-19 <span style="color: #949494;">06:49:59</span> <span style="text-decoration: underline;">21</span>658. <span style="text-decoration: underline;">21</span>678. <span style="text-decoration: underline;">21</span>587. <span style="text-decoration: underline;">21</span>630.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:50:00</span> 2022-07-19 <span style="color: #949494;">06:50:59</span> <span style="text-decoration: underline;">21</span>632. <span style="text-decoration: underline;">21</span>691. <span style="text-decoration: underline;">21</span>623. <span style="text-decoration: underline;">21</span>666.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:51:00</span> 2022-07-19 <span style="color: #949494;">06:51:59</span> <span style="text-decoration: underline;">21</span>668. <span style="text-decoration: underline;">21</span>698. <span style="text-decoration: underline;">21</span>662. <span style="text-decoration: underline;">21</span>663.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:52:00</span> 2022-07-19 <span style="color: #949494;">06:52:59</span> <span style="text-decoration: underline;">21</span>666. <span style="text-decoration: underline;">21</span>727. <span style="text-decoration: underline;">21</span>665. <span style="text-decoration: underline;">21</span>727.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> BTCUSDT 2022-07-19 <span style="color: #949494;">06:53:00</span> 2022-07-19 <span style="color: #949494;">06:53:59</span> <span style="text-decoration: underline;">21</span>717. <span style="text-decoration: underline;">21</span>754. <span style="text-decoration: underline;">21</span>700. <span style="text-decoration: underline;">21</span>751.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 490 more rows, and 2 more variables: volume &lt;dbl&gt;, trades &lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names</span></span>
 </code></pre></div>
     </div>
   </div>
@@ -111,7 +125,7 @@ is 1000.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
