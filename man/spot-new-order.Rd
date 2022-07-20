@@ -55,6 +55,7 @@ Exposes the \code{POST /api/v3/order/} endpoint.
 }
 \examples{
 \dontrun{
+# Create new order (returns a data frame).
 spot_new_order(
   order_type = "LIMIT",
   symbol = "LTCUSDT",
@@ -64,7 +65,7 @@ spot_new_order(
   time_in_force = "GTC"
 )
 
-# Test new order creation.
+# Test new order creation (returns a Boolean).
 spot_new_order(
   order_type = "LIMIT",
   symbol = "LTCUSDT",
