@@ -59,12 +59,16 @@ spot_new_order <- function(
     stop("Must specify price.")
   }
 
+  if (order_type %in% c("MARKET") && !is.null(price)) {
+    stop("Don't specify price.")
+  }
+
   endpoint <- "/api/v3/order"
   if (test) {
     endpoint <- paste0(endpoint, "/test")
   }
 
-  order <- possibly(POST, NULL)(
+  order <- POST(
     endpoint,
     query = list(
       symbol = symbol,
