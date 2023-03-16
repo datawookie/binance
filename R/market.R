@@ -219,14 +219,14 @@ market_trades_historical <- function(symbol, from = 0, limit = 1000) {
       symbol = symbol,
       time = parse_time(time)
     ) %>%
-    select(symbol, everything()) %>%
     clean_names() %>%
     mutate(
       price = as.numeric(price),
       qty = as.numeric(qty),
       quote_qty = as.numeric(quote_qty),
       side = ifelse(is_buyer_maker, "SELL", "BUY")
-    )
+    ) %>%
+    select(symbol, everything(), -is_buyer_maker)
 }
 
 #' Latest price for a symbol
