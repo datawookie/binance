@@ -47,6 +47,8 @@ spot_new_order <- function(
     side,
     quantity,
     price = NULL,
+    stop_price = NULL,
+    trailing_delta = NULL,
     time_in_force = NULL,
     test = FALSE,
     fills = TRUE
@@ -68,16 +70,21 @@ spot_new_order <- function(
     endpoint <- paste0(endpoint, "/test")
   }
 
+  parameters <- list(
+    symbol = symbol,
+    side = side,
+    quantity = quantity,
+    price = price,
+    type = order_type,
+    timeInForce = time_in_force
+  )
+
+  if (!is.null(stop_price)) parameters$stopPrice <- stop_price
+  if (!is.null(trailing_delta)) parameters$trailingDelta <- trailing_delta
+
   order <- POST(
     endpoint,
-    query = list(
-      symbol = symbol,
-      side = side,
-      quantity = quantity,
-      price = price,
-      type = order_type,
-      timeInForce = time_in_force
-    ),
+    query = parameters,
     simplifyVector = FALSE,
     security_type = "USER_DATA"
   )
@@ -90,10 +97,12 @@ spot_new_order <- function(
   } else {
     order$fills <- order$fills %>% bind_rows() %>% fix_types() %>% clean_names() %>% list()
 
+    if ("cummulative_quote_qty" %in% names(order)) order$cummulative_quote_qty
+
     order %>%
       as_tibble() %>%
       clean_names() %>%
-      select(-order_list_id, -client_order_id, -cummulative_quote_qty) %>%
+      select(-order_list_id, -client_order_id) %>%
       when(
         !fills ~ select(., -fills),
         ~ identity(.)
